@@ -26,6 +26,12 @@ namespace ExoGUI.MainSide
         public Trajectory()
         {
             InitializeComponent();
+            string[] speeds = { "1", "2", "5", "10" };
+            foreach (string speed in speeds)
+            {
+                cmb_speed.Items.Add(speed);
+            }
+            cmb_speed.Text = speeds[0];
         }
 
         private void btn_select_file_Click(object sender, RoutedEventArgs e)
@@ -77,6 +83,49 @@ namespace ExoGUI.MainSide
         private void btn_trajectory_run_Click(object sender, RoutedEventArgs e)
         {
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["position_mode_trajectory"];
+        }
+
+        private void btn_start_traj_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_left_traj_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_right_traj_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_stop_traj_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_gain_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (txt_gain.Text != "" || txt_gain.Text != null)
+                {
+                    double temp = Convert.ToDouble(txt_gain.Text);
+                    if (0.0 < temp && temp > 1.0)
+                    {
+                        lbl_validation.Visibility = System.Windows.Visibility.Visible;
+                    }
+                    else
+                    {
+                        lbl_validation.Visibility = System.Windows.Visibility.Hidden;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }
