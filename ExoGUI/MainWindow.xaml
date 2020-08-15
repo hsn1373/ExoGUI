@@ -1,0 +1,164 @@
+﻿<Window x:Class="ExoGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExoGUI"
+        xmlns:main="clr-namespace:ExoGUI.MainSide"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="650"
+        Width="1200">
+    <Grid Margin="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="9*" />
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="{StaticResource WindowBackgroundColor}"
+                BorderThickness="1"
+                Margin="2"
+                Grid.Column="0">
+
+            <Grid Grid.Column="0"
+                  Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Button Content="HOME"
+                            Margin="1"
+                            Grid.Row="0"
+                            Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_go_home"
+                            Click="btn_go_home_Click">
+                    </Button>
+                    <Button Content="LOAD CELL"
+                        Margin="1"
+                        Grid.Row="1"
+                        Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_load_cell"
+                            Click="btn_load_cell_Click">
+                    </Button>
+                    <Button Content="FOOT SENSOR"
+                        Margin="1"
+                        Grid.Row="2"
+                        Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_foot_sensor"
+                            Click="btn_foot_sensor_Click">
+                    </Button>
+                <Button Content="SETTINGS"
+                        Margin="1"
+                        Grid.Row="3"
+                        Background="{StaticResource WindowBackgroundColor}"
+                        Foreground="{StaticResource TextBrush}"
+                        Name="btn_settings"
+                        Click="btn_settings_Click">
+                </Button>
+                <Rectangle Grid.Row="4">
+                </Rectangle>
+                <Button Content="RECORD"
+                        IsEnabled="False"
+                        Margin="1"
+                        Grid.Row="5"
+                        Background="{StaticResource WindowBackgroundColor}"
+                        Foreground="{StaticResource TextBrush}"
+                        Name="btn_record"
+                        Click="btn_record_Click">
+                </Button>
+                <Rectangle Grid.Row="6">
+                </Rectangle>
+                <Button Content="TURN ON"
+                        Margin="1"
+                        Grid.Row="7"
+                        Background="{StaticResource WindowBackgroundColor}"
+                        Foreground="{StaticResource TextBrush}"
+                        Name="btn_turn_on"
+                        Click="btn_turn_on_Click">
+                </Button>
+                <Button Content="RUN DRIVERS"
+                        IsEnabled="False"
+                        Margin="1"
+                        Grid.Row="8"
+                        Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_run"
+                            Click="btn_run_Click">
+                </Button>
+                <Button Content="CLEAR"
+                        IsEnabled="False"
+                        Margin="1"
+                        Grid.Row="9"
+                        Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_clear"
+                            Click="btn_clear_Click">
+                </Button>
+                <Button Content="STOP"
+                        IsEnabled="False"
+                        Margin="1"
+                        Grid.Row="10"
+                        Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_stop"
+                            Click="btn_stop_Click">
+                </Button>
+                <!--<Button Content="TORQUE"
+                            Margin="1"
+                            Height="48"
+                            Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_torque"
+                            Click="btn_torque_Click">
+                    </Button>
+                    <Button Content="PLOT"
+                            Margin="1"
+                            Height="48"
+                            Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_plot"
+                            Click="btn_plot_Click">
+                    </Button>-->
+            </Grid>
+        </Border>
+
+        <Border BorderBrush="{StaticResource WindowBackgroundColor}"
+                BorderThickness="1"
+                Margin="2"
+                Grid.Column="1">
+            <Grid>
+                <Grid Grid.Column="1"
+                      Name="grd_home"
+                      Visibility="Visible">
+                    <main:Home></main:Home>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Name="grd_loadcell"
+                      Visibility="Hidden">
+                    <main:LoadCell></main:LoadCell>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Name="grd_footsensor"
+                      Visibility="Hidden">
+                    <main:FootSensor></main:FootSensor>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Name="grd_settings"
+                      Visibility="Hidden">
+                    <main:Settings></main:Settings>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

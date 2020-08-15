@@ -1,0 +1,9 @@
+﻿<Application x:Class="ExoGUI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ExoGUI"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary Source="Theme.xaml"></ResourceDictionary>
+    </Application.Resources>
+</Application>
