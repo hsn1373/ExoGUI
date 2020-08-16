@@ -15,13 +15,15 @@ namespace ExoGUI.NetWork
             {"home",3},
             {"stop",4},
             {"position_mode_point",5},
-            {"position_mode_trajectory",6},
+            {"start_trajectory",6},
             {"Assist_As_Need",7},
             {"Impedance",8},
             {"Inverse_Dynamic",9},
             {"EMG",10},
             {"zero_impedance",11},
-            {"Torque_control",12 }
+            {"Torque_control",12 },
+            {"right_trajectory",13},
+            {"left_trajectory",14}
         };
 
         public static string LoadCell_Com_Port_Name { get; set; }

@@ -25,7 +25,7 @@ namespace ExoGUI.NetWork
         private float _position_mode_left_hip;
         private float _position_mode_left_knee;
         private UInt32 _buffer_status;
-        private UInt32 _traj_len;
+        private int _start_traj_len,_right_traj_len,_left_traj_len;
         private bool _read_actual_pos;
         private Int32 _target;
         private Int32 _target2;
@@ -202,19 +202,47 @@ namespace ExoGUI.NetWork
                 _connection[X.Position_mode_left_knee] = _position_mode_left_knee;
             }
         }
-        public UInt32 TrajLen
+        public int StartTrajLen
         {
             get
             {
-                _traj_len = (UInt32)_connection[X.TrajLen];
-                return _traj_len;
+                _start_traj_len = (int)_connection[X.StartTrajLen];
+                return _start_traj_len;
             }
             set
             {
-                _traj_len = value;
-                _connection[X.TrajLen] = _traj_len;
+                _start_traj_len = value;
+                _connection[X.StartTrajLen] = _start_traj_len;
             }
         }
+        public int RightTrajLen
+        {
+            get
+            {
+                _right_traj_len = (int)_connection[X.RightTrajLen];
+                return _right_traj_len;
+            }
+            set
+            {
+                _right_traj_len = value;
+                _connection[X.RightTrajLen] = _right_traj_len;
+            }
+        }
+
+        public int LeftTrajLen
+        {
+            get
+            {
+                _left_traj_len = (int)_connection[X.LeftTrajLen];
+                return _left_traj_len;
+            }
+            set
+            {
+                _left_traj_len = value;
+                _connection[X.LeftTrajLen] = _left_traj_len;
+            }
+        }
+
         public UInt32 BufferStatus
         {
             get
@@ -242,7 +270,7 @@ namespace ExoGUI.NetWork
             RightKneeDatalist.Add(Convert.ToSingle(values[3]));
         }
 
-        public void sendFirstBuffer()
+        public void sendStartTrajFirstBuffer()
         {
             float[,] _buffer = new float[4, 500];
             float[,] _buffer2 = new float[4, 500];
@@ -256,6 +284,52 @@ namespace ExoGUI.NetWork
                 _buffer2[1, i] = leftKneeDatalist[i+500];
                 _buffer2[2, i] = RightHipDatalist[i+500];
                 _buffer2[3, i] = RightKneeDatalist[i+500];
+            }
+            BufferPos1 = _buffer;
+            BufferPos2 = _buffer2;
+            BufferCounter = BufferCounter + 1000;
+        }
+
+        public void sendRightTrajFirstBuffer()
+        {
+            float[,] _buffer = new float[4, 500];
+            float[,] _buffer2 = new float[4, 500];
+            BufferCounter = _start_traj_len;
+            int j = _start_traj_len;
+            for (int i = 0; i < 500; i++)
+            {
+                _buffer[0, i] = leftHipDatalist[j];
+                _buffer[1, i] = leftKneeDatalist[j];
+                _buffer[2, i] = RightHipDatalist[j];
+                _buffer[3, i] = RightKneeDatalist[j];
+                _buffer2[0, i] = leftHipDatalist[j + 500];
+                _buffer2[1, i] = leftKneeDatalist[j + 500];
+                _buffer2[2, i] = RightHipDatalist[j + 500];
+                _buffer2[3, i] = RightKneeDatalist[j + 500];
+                j++;
+            }
+            BufferPos1 = _buffer;
+            BufferPos2 = _buffer2;
+            BufferCounter = BufferCounter + 1000;
+        }
+
+        public void sendLeftTrajFirstBuffer()
+        {
+            float[,] _buffer = new float[4, 500];
+            float[,] _buffer2 = new float[4, 500];
+            BufferCounter = _start_traj_len+_right_traj_len;
+            int j = _start_traj_len+_right_traj_len;
+            for (int i = 0; i < 500; i++)
+            {
+                _buffer[0, i] = leftHipDatalist[j];
+                _buffer[1, i] = leftKneeDatalist[j];
+                _buffer[2, i] = RightHipDatalist[j];
+                _buffer[3, i] = RightKneeDatalist[j];
+                _buffer2[0, i] = leftHipDatalist[j + 500];
+                _buffer2[1, i] = leftKneeDatalist[j + 500];
+                _buffer2[2, i] = RightHipDatalist[j + 500];
+                _buffer2[3, i] = RightKneeDatalist[j + 500];
+                j++;
             }
             BufferPos1 = _buffer;
             BufferPos2 = _buffer2;

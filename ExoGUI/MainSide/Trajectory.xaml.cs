@@ -36,7 +36,9 @@ namespace ExoGUI.MainSide
 
         private void btn_select_file_Click(object sender, RoutedEventArgs e)
         {
-            int trajLen = 0;
+            int start_traj_len = 0;
+            int right_traj_len = 0;
+            int left_traj_len = 0;
             OpenFileDialog PositionTrajectoryFileDialog = new OpenFileDialog();
             if (PositionTrajectoryFileDialog.ShowDialog() == true)
             {
@@ -45,38 +47,25 @@ namespace ExoGUI.MainSide
                 using (var reader = new StreamReader(filePath))
                 {
                     var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    start_traj_len = Convert.ToInt32(values[0]);
+                    right_traj_len = Convert.ToInt32(values[1]);
+                    left_traj_len = Convert.ToInt32(values[2]);
+                    //Console.WriteLine("start_traj_len: " + start_traj_len+ " right_traj_len: "+ right_traj_len+ " left_traj_len: "+ left_traj_len);
+                    line = reader.ReadLine();
                     while (!reader.EndOfStream)
                     {
                         line = reader.ReadLine();
-                        var values = line.Split(',');
+                        values = line.Split(',');
                         BeckhoffContext.Controller.fillBuffers(values);
-                        trajLen++;
-                        /*
-                        leftHipDatalist.Add(Convert.ToSingle(values[0]));
-                        leftKneeDatalist.Add(Convert.ToSingle(values[1]));
-                        RightHipDatalist.Add(Convert.ToSingle(values[2]));
-                        RightKneeDatalist.Add(Convert.ToSingle(values[3]));
-                        */
                     }
                 }
+                
+                BeckhoffContext.Controller.StartTrajLen = start_traj_len;
+                BeckhoffContext.Controller.RightTrajLen = right_traj_len;
+                BeckhoffContext.Controller.LeftTrajLen = left_traj_len;
 
-                BeckhoffContext.Controller.TrajLen = (UInt32)trajLen;
-
-                /*
-                float[,] _buffer = new float[4, 500];
-                BeckhoffContext.Controller.BufferCounter = 0;
-                // fill first buffer
-                for (int i = 0; i < 500; i++)
-                {
-                    _buffer[0, i] = leftHipDatalist[i];
-                    _buffer[1, i] = leftKneeDatalist[i];
-                    _buffer[2, i] = RightHipDatalist[i];
-                    _buffer[3, i] = RightKneeDatalist[i];
-                }
-                BeckhoffContext.Controller.BufferPos1 = _buffer;
-                BeckhoffContext.Controller.BufferCounter = BeckhoffContext.Controller.BufferCounter + 500;
-                */
-                BeckhoffContext.Controller.sendFirstBuffer();
+                BeckhoffContext.Controller.sendStartTrajFirstBuffer();
             }
         }
 
@@ -87,17 +76,19 @@ namespace ExoGUI.MainSide
 
         private void btn_start_traj_Click(object sender, RoutedEventArgs e)
         {
-
+            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["start_trajectory"];
         }
 
         private void btn_left_traj_Click(object sender, RoutedEventArgs e)
         {
-
+            BeckhoffContext.Controller.sendLeftTrajFirstBuffer();
+            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["left_trajectory"];
         }
 
         private void btn_right_traj_Click(object sender, RoutedEventArgs e)
         {
-
+            BeckhoffContext.Controller.sendRightTrajFirstBuffer();
+            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["right_trajectory"];
         }
 
         private void btn_stop_traj_Click(object sender, RoutedEventArgs e)
