@@ -36,9 +36,8 @@ namespace ExoGUI.MainSide
 
         private void btn_select_file_Click(object sender, RoutedEventArgs e)
         {
-            int start_traj_len = 0;
-            int right_traj_len = 0;
-            int left_traj_len = 0;
+            UInt32 start_traj_len = 0;
+            UInt32 right_traj_len = 0;
             OpenFileDialog PositionTrajectoryFileDialog = new OpenFileDialog();
             if (PositionTrajectoryFileDialog.ShowDialog() == true)
             {
@@ -48,9 +47,8 @@ namespace ExoGUI.MainSide
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
-                    start_traj_len = Convert.ToInt32(values[0]);
-                    right_traj_len = Convert.ToInt32(values[1]);
-                    left_traj_len = Convert.ToInt32(values[2]);
+                    start_traj_len = Convert.ToUInt32(values[0]);
+                    right_traj_len = Convert.ToUInt32(values[1]);
                     //Console.WriteLine("start_traj_len: " + start_traj_len+ " right_traj_len: "+ right_traj_len+ " left_traj_len: "+ left_traj_len);
                     line = reader.ReadLine();
                     while (!reader.EndOfStream)
@@ -63,7 +61,6 @@ namespace ExoGUI.MainSide
                 
                 BeckhoffContext.Controller.StartTrajLen = start_traj_len;
                 BeckhoffContext.Controller.RightTrajLen = right_traj_len;
-                BeckhoffContext.Controller.LeftTrajLen = left_traj_len;
 
                 BeckhoffContext.Controller.sendStartTrajFirstBuffer();
             }
@@ -81,12 +78,14 @@ namespace ExoGUI.MainSide
 
         private void btn_left_traj_Click(object sender, RoutedEventArgs e)
         {
+            BeckhoffContext.Controller.reset_buffer_status();
             BeckhoffContext.Controller.sendLeftTrajFirstBuffer();
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["left_trajectory"];
         }
 
         private void btn_right_traj_Click(object sender, RoutedEventArgs e)
         {
+            BeckhoffContext.Controller.reset_buffer_status();
             BeckhoffContext.Controller.sendRightTrajFirstBuffer();
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["right_trajectory"];
         }

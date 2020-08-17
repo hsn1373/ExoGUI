@@ -25,7 +25,7 @@ namespace ExoGUI.NetWork
         private float _position_mode_left_hip;
         private float _position_mode_left_knee;
         private UInt32 _buffer_status;
-        private int _start_traj_len,_right_traj_len,_left_traj_len;
+        private UInt32 _start_traj_len,_right_traj_len;
         private bool _read_actual_pos;
         private Int32 _target;
         private Int32 _target2;
@@ -202,11 +202,11 @@ namespace ExoGUI.NetWork
                 _connection[X.Position_mode_left_knee] = _position_mode_left_knee;
             }
         }
-        public int StartTrajLen
+        public UInt32 StartTrajLen
         {
             get
             {
-                _start_traj_len = (int)_connection[X.StartTrajLen];
+                _start_traj_len = (UInt32)_connection[X.StartTrajLen];
                 return _start_traj_len;
             }
             set
@@ -215,31 +215,17 @@ namespace ExoGUI.NetWork
                 _connection[X.StartTrajLen] = _start_traj_len;
             }
         }
-        public int RightTrajLen
+        public UInt32 RightTrajLen
         {
             get
             {
-                _right_traj_len = (int)_connection[X.RightTrajLen];
+                _right_traj_len = (UInt32)_connection[X.RightTrajLen];
                 return _right_traj_len;
             }
             set
             {
                 _right_traj_len = value;
                 _connection[X.RightTrajLen] = _right_traj_len;
-            }
-        }
-
-        public int LeftTrajLen
-        {
-            get
-            {
-                _left_traj_len = (int)_connection[X.LeftTrajLen];
-                return _left_traj_len;
-            }
-            set
-            {
-                _left_traj_len = value;
-                _connection[X.LeftTrajLen] = _left_traj_len;
             }
         }
 
@@ -294,8 +280,8 @@ namespace ExoGUI.NetWork
         {
             float[,] _buffer = new float[4, 500];
             float[,] _buffer2 = new float[4, 500];
-            BufferCounter = _start_traj_len;
-            int j = _start_traj_len;
+            BufferCounter = Convert.ToInt32(_start_traj_len + _right_traj_len);
+            int j = Convert.ToInt32(_start_traj_len + _right_traj_len);
             for (int i = 0; i < 500; i++)
             {
                 _buffer[0, i] = leftHipDatalist[j];
@@ -317,8 +303,8 @@ namespace ExoGUI.NetWork
         {
             float[,] _buffer = new float[4, 500];
             float[,] _buffer2 = new float[4, 500];
-            BufferCounter = _start_traj_len+_right_traj_len;
-            int j = _start_traj_len+_right_traj_len;
+            BufferCounter = Convert.ToInt32(_start_traj_len);
+            int j = Convert.ToInt32(_start_traj_len);
             for (int i = 0; i < 500; i++)
             {
                 _buffer[0, i] = leftHipDatalist[j];
@@ -334,6 +320,12 @@ namespace ExoGUI.NetWork
             BufferPos1 = _buffer;
             BufferPos2 = _buffer2;
             BufferCounter = BufferCounter + 1000;
+        }
+
+        public void reset_buffer_status()
+        {
+            // set buffer status to 1 just beckhoff side
+            _connection[X.BufferStatus] = 1;
         }
 
         private void CommonInitialize()
