@@ -23,6 +23,9 @@ namespace ExoGUI.MainSide
     /// </summary>
     public partial class Trajectory : UserControl
     {
+        UInt32 start_traj_len = 0;
+        UInt32 right_traj_len = 0;
+
         public Trajectory()
         {
             InitializeComponent();
@@ -36,8 +39,8 @@ namespace ExoGUI.MainSide
 
         private void btn_select_file_Click(object sender, RoutedEventArgs e)
         {
-            UInt32 start_traj_len = 0;
-            UInt32 right_traj_len = 0;
+            start_traj_len = 0;
+            right_traj_len = 0;
             OpenFileDialog PositionTrajectoryFileDialog = new OpenFileDialog();
             if (PositionTrajectoryFileDialog.ShowDialog() == true)
             {
@@ -61,8 +64,6 @@ namespace ExoGUI.MainSide
                 
                 BeckhoffContext.Controller.StartTrajLen = start_traj_len;
                 BeckhoffContext.Controller.RightTrajLen = right_traj_len;
-
-                BeckhoffContext.Controller.sendStartTrajFirstBuffer();
             }
         }
 
@@ -73,26 +74,40 @@ namespace ExoGUI.MainSide
 
         private void btn_start_traj_Click(object sender, RoutedEventArgs e)
         {
+            btn_left_traj.IsEnabled = true;
+            btn_start_traj.IsEnabled = false;
+            btn_stop_traj.IsEnabled = true;
+            BeckhoffContext.Controller.TrajectoryGain = float.Parse(txt_gain.Text);
+            BeckhoffContext.Controller.sendStartTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["start_trajectory"];
         }
 
         private void btn_left_traj_Click(object sender, RoutedEventArgs e)
         {
-            BeckhoffContext.Controller.reset_buffer_status();
-            BeckhoffContext.Controller.sendLeftTrajFirstBuffer();
+            btn_right_traj.IsEnabled = true;
+            btn_left_traj.IsEnabled = false;
+            //BeckhoffContext.Controller.TrajectoryGain = (float)Convert.ToDouble(txt_gain.Text);
+            BeckhoffContext.Controller.TrajectoryGain = float.Parse(txt_gain.Text);
+            BeckhoffContext.Controller.sendLeftTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["left_trajectory"];
         }
 
         private void btn_right_traj_Click(object sender, RoutedEventArgs e)
         {
-            BeckhoffContext.Controller.reset_buffer_status();
-            BeckhoffContext.Controller.sendRightTrajFirstBuffer();
+            btn_left_traj.IsEnabled = true;
+            btn_right_traj.IsEnabled = false;
+            BeckhoffContext.Controller.TrajectoryGain = float.Parse(txt_gain.Text);
+            BeckhoffContext.Controller.sendRightTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["right_trajectory"];
         }
 
         private void btn_stop_traj_Click(object sender, RoutedEventArgs e)
         {
-
+            btn_start_traj.IsEnabled = true;
+            btn_stop_traj.IsEnabled = false;
+            btn_right_traj.IsEnabled = false;
+            btn_left_traj.IsEnabled = false;
+            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["stop_trajectory"];
         }
 
         private void txt_gain_TextChanged(object sender, TextChangedEventArgs e)
@@ -116,6 +131,14 @@ namespace ExoGUI.MainSide
             {
 
             }
+        }
+
+        private void cmb_speed_DropDownClosed(object sender, EventArgs e)
+        {
+            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["do_nothing"];
+            BeckhoffContext.Controller.StartTrajLen = start_traj_len / Convert.ToUInt32(cmb_speed.Text);
+            BeckhoffContext.Controller.RightTrajLen = right_traj_len / Convert.ToUInt32(cmb_speed.Text);
+            BeckhoffContext.Controller.TrajectorySpeed = Convert.ToInt32(cmb_speed.Text);
         }
     }
 }

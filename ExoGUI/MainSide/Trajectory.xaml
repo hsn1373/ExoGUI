@@ -104,6 +104,7 @@
                              Background="{StaticResource TextBoxBackground}"
                              VerticalContentAlignment="Center"
                              HorizontalContentAlignment="Center"
+                             Text="1.0"
                              Name="txt_gain"
                              TextChanged="txt_gain_TextChanged">
                     </TextBox>
@@ -128,6 +129,7 @@
                               Margin="10"
                               HorizontalContentAlignment="Center"
                               VerticalContentAlignment="Center"
+                              DropDownClosed="cmb_speed_DropDownClosed"
                               Name="cmb_speed">
 
                     </ComboBox>
@@ -182,6 +184,7 @@
                             Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_left_traj"
+                            IsEnabled="False"
                             Click="btn_left_traj_Click">
                     </Button>
 
@@ -195,6 +198,7 @@
                             Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_right_traj"
+                            IsEnabled="False"
                             Click="btn_right_traj_Click">
                     </Button>
 
@@ -208,6 +212,7 @@
                             Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_stop_traj"
+                            IsEnabled="False"
                             Click="btn_stop_traj_Click">
                     </Button>
 

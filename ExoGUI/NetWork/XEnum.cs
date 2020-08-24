@@ -25,6 +25,8 @@ namespace ExoGUI.NetWork
         RightTrajLen,
         [Type(TypeAttribute.Types.UDInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: true)]
         BufferStatus,
+        [Type(TypeAttribute.Types.Bool, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        ReachEndOfTraj,
         [Type(TypeAttribute.Types.Real, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
         BufferPos1,
         [Type(TypeAttribute.Types.Real, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]

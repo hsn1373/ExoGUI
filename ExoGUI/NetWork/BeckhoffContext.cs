@@ -23,7 +23,9 @@ namespace ExoGUI.NetWork
             {"zero_impedance",11},
             {"Torque_control",12 },
             {"right_trajectory",13},
-            {"left_trajectory",14}
+            {"left_trajectory",14},
+            {"stop_trajectory",15},
+            {"do_nothing",16}
         };
 
         public static string LoadCell_Com_Port_Name { get; set; }
