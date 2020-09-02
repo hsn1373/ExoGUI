@@ -29,7 +29,7 @@ namespace ExoGUI.NetWork
         private float _position_mode_right_knee;
         private float _position_mode_left_hip;
         private float _position_mode_left_knee;
-        private UInt32 _buffer_status;
+        private UInt32 _buffer_status, _whichEndOfTraj;
         private UInt32 _start_traj_len,_right_traj_len;
         private bool _read_actual_pos;
         private Int32 _target;
@@ -127,6 +127,21 @@ namespace ExoGUI.NetWork
                 _connection[X.ReachEndOfTraj] = _reachEndOfTraj;
             }
         }
+
+        public UInt32 WhichEndOfTraj
+        {
+            get
+            {
+                _whichEndOfTraj = (UInt32)_connection[X.WhichEndOfTraj];
+                return _whichEndOfTraj;
+            }
+            set
+            {
+                _whichEndOfTraj = value;
+                _connection[X.WhichEndOfTraj] = _whichEndOfTraj;
+            }
+        }
+
         public int TargetPosition
         {
             get
@@ -404,6 +419,34 @@ namespace ExoGUI.NetWork
                         }
                         BufferPos1 = _buffer;
                     }
+                }
+            }
+            else if(e.PropertyName == X.WhichEndOfTraj.ToString())
+            {
+                if (WhichEndOfTraj == 0)
+                {
+                    //mytraj.btn_left_traj.IsEnabled = false;
+                    //mytraj.btn_right_traj.IsEnabled = false;
+                    Console.WriteLine("start a traj");
+                }
+                else if (WhichEndOfTraj==1)
+                {
+                    //end of start trajectroy
+                    //mytraj.btn_left_traj.IsEnabled = true;
+                    //Trajectory.enableButtonsOnTrajEnd();
+                    Console.WriteLine("end of start trajectroy");
+                }
+                else if(WhichEndOfTraj==2)
+                {
+                    //end of left trajectroy
+                    //mytraj.btn_right_traj.IsEnabled = true;
+                    Console.WriteLine("end of left trajectroy");
+                }
+                else if(WhichEndOfTraj==3)
+                {
+                    //end of right trajectroy
+                    //mytraj.btn_left_traj.IsEnabled = true;
+                    Console.WriteLine("end of riight trajectroy");
                 }
             }
         }

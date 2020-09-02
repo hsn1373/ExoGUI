@@ -25,6 +25,7 @@ namespace ExoGUI.MainSide
     {
         UInt32 start_traj_len = 0;
         UInt32 right_traj_len = 0;
+        string current_gain = "1";
 
         public Trajectory()
         {
@@ -77,6 +78,9 @@ namespace ExoGUI.MainSide
             btn_left_traj.IsEnabled = true;
             btn_start_traj.IsEnabled = false;
             btn_stop_traj.IsEnabled = true;
+            btn_increase_gain.IsEnabled = true;
+            btn_decrease_gain.IsEnabled = true;
+            current_gain = txt_gain.Text;
             BeckhoffContext.Controller.TrajectoryGain = float.Parse(txt_gain.Text);
             BeckhoffContext.Controller.sendStartTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["start_trajectory"];
@@ -86,7 +90,9 @@ namespace ExoGUI.MainSide
         {
             btn_right_traj.IsEnabled = true;
             btn_left_traj.IsEnabled = false;
-            //BeckhoffContext.Controller.TrajectoryGain = (float)Convert.ToDouble(txt_gain.Text);
+            btn_increase_gain.IsEnabled = true;
+            btn_decrease_gain.IsEnabled = true;
+            current_gain = txt_gain.Text;
             BeckhoffContext.Controller.TrajectoryGain = float.Parse(txt_gain.Text);
             BeckhoffContext.Controller.sendLeftTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["left_trajectory"];
@@ -96,6 +102,9 @@ namespace ExoGUI.MainSide
         {
             btn_left_traj.IsEnabled = true;
             btn_right_traj.IsEnabled = false;
+            btn_increase_gain.IsEnabled = true;
+            btn_decrease_gain.IsEnabled = true;
+            current_gain = txt_gain.Text;
             BeckhoffContext.Controller.TrajectoryGain = float.Parse(txt_gain.Text);
             BeckhoffContext.Controller.sendRightTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["right_trajectory"];
@@ -110,6 +119,11 @@ namespace ExoGUI.MainSide
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["stop_trajectory"];
         }
 
+        //public static void enableButtonsOnTrajEnd()
+        //{
+        //    btn_left_traj.IsEnabled = true;
+        //}
+
         private void txt_gain_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -119,11 +133,11 @@ namespace ExoGUI.MainSide
                     double temp = Convert.ToDouble(txt_gain.Text);
                     if (0.0 < temp && temp > 1.0)
                     {
-                        lbl_validation.Visibility = System.Windows.Visibility.Visible;
+                        lbl_validation.Visibility = Visibility.Visible;
                     }
                     else
                     {
-                        lbl_validation.Visibility = System.Windows.Visibility.Hidden;
+                        lbl_validation.Visibility = Visibility.Hidden;
                     }
                 }
             }
@@ -139,6 +153,46 @@ namespace ExoGUI.MainSide
             BeckhoffContext.Controller.StartTrajLen = start_traj_len / Convert.ToUInt32(cmb_speed.Text);
             BeckhoffContext.Controller.RightTrajLen = right_traj_len / Convert.ToUInt32(cmb_speed.Text);
             BeckhoffContext.Controller.TrajectorySpeed = Convert.ToInt32(cmb_speed.Text);
+        }
+
+        private void btn_increase_gain_Click(object sender, RoutedEventArgs e)
+        {
+            if((Convert.ToDouble(txt_gain.Text) + 0.1).ToString()==current_gain)
+            {
+                btn_decrease_gain.IsEnabled = true;
+                txt_gain.Text = (Convert.ToDouble(txt_gain.Text) + 0.1).ToString();
+            }
+            else if((Convert.ToDouble(txt_gain.Text) + 0.1).ToString() == "1.1")
+            {
+                btn_decrease_gain.IsEnabled = true;
+                btn_increase_gain.IsEnabled = false;
+            }
+            else
+            {
+                btn_decrease_gain.IsEnabled = true;
+                btn_increase_gain.IsEnabled = false;
+                txt_gain.Text = (Convert.ToDouble(txt_gain.Text) + 0.1).ToString();
+            }
+        }
+
+        private void btn_decrease_gain_Click(object sender, RoutedEventArgs e)
+        {
+            if ((Convert.ToDouble(txt_gain.Text) - 0.1).ToString() == current_gain)
+            {
+                btn_increase_gain.IsEnabled = true;
+                txt_gain.Text = (Convert.ToDouble(txt_gain.Text) - 0.1).ToString();
+            }
+            else if ((Convert.ToDouble(txt_gain.Text) - 0.1).ToString() == "-0.1")
+            {
+                btn_decrease_gain.IsEnabled = false;
+                btn_increase_gain.IsEnabled = true;
+            }
+            else
+            {
+                btn_increase_gain.IsEnabled = true;
+                btn_decrease_gain.IsEnabled = false;
+                txt_gain.Text = (Convert.ToDouble(txt_gain.Text) - 0.1).ToString();
+            }
         }
     }
 }

@@ -83,12 +83,13 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="0.3*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
 
 
@@ -104,10 +105,34 @@
                              Background="{StaticResource TextBoxBackground}"
                              VerticalContentAlignment="Center"
                              HorizontalContentAlignment="Center"
-                             Text="1.0"
+                             Text="1"
                              Name="txt_gain"
                              TextChanged="txt_gain_TextChanged">
                     </TextBox>
+                    <Grid Grid.Column="3"
+                        Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0"
+                                Content="+"
+                                IsEnabled="false"
+                                Margin="2"
+                                Background="{StaticResource WindowBackgroundColor}"
+                                Foreground="{StaticResource TextBrush}"
+                                Name="btn_increase_gain"
+                                Click="btn_increase_gain_Click">
+                        </Button>
+                        <Button Grid.Row="1"
+                                Content="-"
+                                Margin="2"
+                                Background="{StaticResource WindowBackgroundColor}"
+                                Foreground="{StaticResource TextBrush}"
+                                Name="btn_decrease_gain"
+                                Click="btn_decrease_gain_Click">
+                        </Button>
+                    </Grid>
                     <Label Grid.Column="2"
                            Grid.Row="2"
                            Foreground="{StaticResource DangerBrush}"
@@ -117,14 +142,14 @@
                            Visibility="Hidden"
                            HorizontalContentAlignment="Center">Input value must be between 0 and 1
                     </Label>
-                    <Label Grid.Column="3"
+                    <Label Grid.Column="4"
                            Grid.Row="1"
                            Foreground="{StaticResource WindowText}"
                            VerticalContentAlignment="Center"
                            Padding="0"
                            HorizontalContentAlignment="Center">Speed
                     </Label>
-                    <ComboBox Grid.Column="4"
+                    <ComboBox Grid.Column="5"
                               Grid.Row="1"
                               Margin="10"
                               HorizontalContentAlignment="Center"
