@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,6 +27,7 @@ namespace ExoGUI.MainSide
         UInt32 start_traj_len = 0;
         UInt32 right_traj_len = 0;
         string current_gain = "1";
+        public Thread th;
 
         public Trajectory()
         {
@@ -36,6 +38,8 @@ namespace ExoGUI.MainSide
                 cmb_speed.Items.Add(speed);
             }
             cmb_speed.Text = speeds[0];
+            
+
         }
 
         private void btn_select_file_Click(object sender, RoutedEventArgs e)
@@ -75,7 +79,8 @@ namespace ExoGUI.MainSide
 
         private void btn_start_traj_Click(object sender, RoutedEventArgs e)
         {
-            btn_left_traj.IsEnabled = true;
+            BeckhoffContext.Controller.EnableButtons = 0;
+            btn_left_traj.IsEnabled = false;
             btn_start_traj.IsEnabled = false;
             btn_stop_traj.IsEnabled = true;
             btn_increase_gain.IsEnabled = true;
@@ -84,11 +89,13 @@ namespace ExoGUI.MainSide
             BeckhoffContext.Controller.TrajectoryGain = float.Parse(txt_gain.Text);
             BeckhoffContext.Controller.sendStartTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["start_trajectory"];
+            th = new Thread(Run_Config_Buttons_Enable);
+            th.Start();
         }
 
         private void btn_left_traj_Click(object sender, RoutedEventArgs e)
         {
-            btn_right_traj.IsEnabled = true;
+            BeckhoffContext.Controller.EnableButtons = 0;
             btn_left_traj.IsEnabled = false;
             btn_increase_gain.IsEnabled = true;
             btn_decrease_gain.IsEnabled = true;
@@ -96,11 +103,13 @@ namespace ExoGUI.MainSide
             BeckhoffContext.Controller.TrajectoryGain = float.Parse(txt_gain.Text);
             BeckhoffContext.Controller.sendLeftTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["left_trajectory"];
+            th = new Thread(Run_Config_Buttons_Enable);
+            th.Start();
         }
 
         private void btn_right_traj_Click(object sender, RoutedEventArgs e)
         {
-            btn_left_traj.IsEnabled = true;
+            BeckhoffContext.Controller.EnableButtons = 0;
             btn_right_traj.IsEnabled = false;
             btn_increase_gain.IsEnabled = true;
             btn_decrease_gain.IsEnabled = true;
@@ -108,10 +117,13 @@ namespace ExoGUI.MainSide
             BeckhoffContext.Controller.TrajectoryGain = float.Parse(txt_gain.Text);
             BeckhoffContext.Controller.sendRightTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["right_trajectory"];
+            th = new Thread(Run_Config_Buttons_Enable);
+            th.Start();
         }
 
         private void btn_stop_traj_Click(object sender, RoutedEventArgs e)
         {
+            BeckhoffContext.Controller.EnableButtons = 0;
             btn_start_traj.IsEnabled = true;
             btn_stop_traj.IsEnabled = false;
             btn_right_traj.IsEnabled = false;
@@ -119,9 +131,9 @@ namespace ExoGUI.MainSide
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["stop_trajectory"];
         }
 
-        //public static void enableButtonsOnTrajEnd()
+        //public static void enablebuttonsontrajend()
         //{
-        //    btn_left_traj.IsEnabled = true;
+        //    btn_left_traj.isenabled = true;
         //}
 
         private void txt_gain_TextChanged(object sender, TextChangedEventArgs e)
@@ -192,6 +204,36 @@ namespace ExoGUI.MainSide
                 btn_increase_gain.IsEnabled = true;
                 btn_decrease_gain.IsEnabled = false;
                 txt_gain.Text = (Convert.ToDouble(txt_gain.Text) - 0.1).ToString();
+            }
+        }
+        private void Run_Config_Buttons_Enable()
+        {
+            while (true)
+            {
+                switch (BeckhoffContext.Controller.EnableButtons)
+                {
+                    case 1:
+                        Application.Current.Dispatcher.Invoke(new Action(() =>
+                        {
+                            btn_left_traj.IsEnabled = true;
+                        }));
+                        th.Abort();
+                        return;
+                    case 2:
+                        Application.Current.Dispatcher.Invoke(new Action(() =>
+                        {
+                        btn_right_traj.IsEnabled = true;
+                        }));
+                        th.Abort();
+                        return;
+                    case 3:
+                        Application.Current.Dispatcher.Invoke(new Action(() =>
+                        {
+                            btn_left_traj.IsEnabled = true;
+                        }));
+                        th.Abort();
+                        return;
+                }
             }
         }
     }

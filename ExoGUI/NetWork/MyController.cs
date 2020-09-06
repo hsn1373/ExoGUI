@@ -36,6 +36,7 @@ namespace ExoGUI.NetWork
         private Int32 _target2;
         private Int32 _target3;
         private Int32 _target4;
+        public int EnableButtons = 0;
 
         public int BufferCounter
         {
@@ -434,18 +435,21 @@ namespace ExoGUI.NetWork
                     //end of start trajectroy
                     //mytraj.btn_left_traj.IsEnabled = true;
                     //Trajectory.enableButtonsOnTrajEnd();
+                    EnableButtons = 1;
                     Console.WriteLine("end of start trajectroy");
                 }
                 else if(WhichEndOfTraj==2)
                 {
                     //end of left trajectroy
                     //mytraj.btn_right_traj.IsEnabled = true;
+                    EnableButtons = 2;
                     Console.WriteLine("end of left trajectroy");
                 }
                 else if(WhichEndOfTraj==3)
                 {
                     //end of right trajectroy
                     //mytraj.btn_left_traj.IsEnabled = true;
+                    EnableButtons = 3;
                     Console.WriteLine("end of riight trajectroy");
                 }
             }
