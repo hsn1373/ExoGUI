@@ -26,6 +26,7 @@
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
                     <RowDefinition Height="2*" />
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="2*" />
@@ -58,30 +59,38 @@
                             Name="btn_foot_sensor"
                             Click="btn_foot_sensor_Click">
                     </Button>
-                <Button Content="SETTINGS"
+                <Button Content="TRAJECTORY"
                         Margin="1"
                         Grid.Row="3"
+                        Background="{StaticResource WindowBackgroundColor}"
+                        Foreground="{StaticResource TextBrush}"
+                        Name="btn_trajectory"
+                        Click="btn_trajectory_Click">
+                </Button>
+                <Button Content="SETTINGS"
+                        Margin="1"
+                        Grid.Row="4"
                         Background="{StaticResource WindowBackgroundColor}"
                         Foreground="{StaticResource TextBrush}"
                         Name="btn_settings"
                         Click="btn_settings_Click">
                 </Button>
-                <Rectangle Grid.Row="4">
+                <Rectangle Grid.Row="5">
                 </Rectangle>
                 <Button Content="RECORD"
                         IsEnabled="False"
                         Margin="1"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Background="{StaticResource WindowBackgroundColor}"
                         Foreground="{StaticResource TextBrush}"
                         Name="btn_record"
                         Click="btn_record_Click">
                 </Button>
-                <Rectangle Grid.Row="6">
+                <Rectangle Grid.Row="7">
                 </Rectangle>
                 <Button Content="TURN ON"
                         Margin="1"
-                        Grid.Row="7"
+                        Grid.Row="8"
                         Background="{StaticResource WindowBackgroundColor}"
                         Foreground="{StaticResource TextBrush}"
                         Name="btn_turn_on"
@@ -90,7 +99,7 @@
                 <Button Content="RUN DRIVERS"
                         IsEnabled="False"
                         Margin="1"
-                        Grid.Row="8"
+                        Grid.Row="9"
                         Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_run"
@@ -99,7 +108,7 @@
                 <Button Content="CLEAR"
                         IsEnabled="False"
                         Margin="1"
-                        Grid.Row="9"
+                        Grid.Row="10"
                         Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_clear"
@@ -108,7 +117,7 @@
                 <Button Content="STOP"
                         IsEnabled="False"
                         Margin="1"
-                        Grid.Row="10"
+                        Grid.Row="11"
                         Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_stop"
@@ -152,6 +161,11 @@
                       Name="grd_footsensor"
                       Visibility="Hidden">
                     <main:FootSensor></main:FootSensor>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Name="grd_trajectory"
+                      Visibility="Hidden">
+                    <main:Trajectory></main:Trajectory>
                 </Grid>
                 <Grid Grid.Column="1"
                       Name="grd_settings"

@@ -46,6 +46,7 @@ namespace ExoGUI
             grd_home.Visibility = System.Windows.Visibility.Visible;
             grd_loadcell.Visibility = System.Windows.Visibility.Hidden;
             grd_footsensor.Visibility = System.Windows.Visibility.Hidden;
+            grd_trajectory.Visibility = System.Windows.Visibility.Hidden;
             grd_settings.Visibility = System.Windows.Visibility.Hidden;
         }
 
@@ -54,6 +55,7 @@ namespace ExoGUI
             grd_home.Visibility = System.Windows.Visibility.Hidden;
             grd_loadcell.Visibility = System.Windows.Visibility.Visible;
             grd_footsensor.Visibility = System.Windows.Visibility.Hidden;
+            grd_trajectory.Visibility = System.Windows.Visibility.Hidden;
             grd_settings.Visibility = System.Windows.Visibility.Hidden;
         }
 
@@ -62,6 +64,15 @@ namespace ExoGUI
             grd_home.Visibility = System.Windows.Visibility.Hidden;
             grd_loadcell.Visibility = System.Windows.Visibility.Hidden;
             grd_footsensor.Visibility = System.Windows.Visibility.Visible;
+            grd_trajectory.Visibility = System.Windows.Visibility.Hidden;
+            grd_settings.Visibility = System.Windows.Visibility.Hidden;
+        }
+        private void btn_trajectory_Click(object sender, RoutedEventArgs e)
+        {
+            grd_home.Visibility = System.Windows.Visibility.Hidden;
+            grd_loadcell.Visibility = System.Windows.Visibility.Hidden;
+            grd_footsensor.Visibility = System.Windows.Visibility.Hidden;
+            grd_trajectory.Visibility = System.Windows.Visibility.Visible;
             grd_settings.Visibility = System.Windows.Visibility.Hidden;
         }
 
@@ -70,6 +81,7 @@ namespace ExoGUI
             grd_home.Visibility = System.Windows.Visibility.Hidden;
             grd_loadcell.Visibility = System.Windows.Visibility.Hidden;
             grd_footsensor.Visibility = System.Windows.Visibility.Hidden;
+            grd_trajectory.Visibility = System.Windows.Visibility.Hidden;
             grd_settings.Visibility = System.Windows.Visibility.Visible;
         }
 

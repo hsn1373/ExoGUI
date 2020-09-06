@@ -17,6 +17,11 @@ namespace ExoGUI.NetWork
         private float[,] _bufferPos1 = new float[4, 500];
         private float[,] _bufferPos2 = new float[4, 500];
         private int _bufferCounter = 0;
+        private bool _reachEndOfTraj;
+
+        private int _trajectory_speed = 1;
+        private float _trajectory_gain = 1.00f;
+        private bool _is_left_or_right_button_clicked = false;
         
         private PLCConnection _connection;
         private UInt32 _gui_manager;
@@ -24,13 +29,14 @@ namespace ExoGUI.NetWork
         private float _position_mode_right_knee;
         private float _position_mode_left_hip;
         private float _position_mode_left_knee;
-        private UInt32 _buffer_status;
-        private UInt32 _traj_len;
+        private UInt32 _buffer_status, _whichEndOfTraj;
+        private UInt32 _start_traj_len,_right_traj_len;
         private bool _read_actual_pos;
         private Int32 _target;
         private Int32 _target2;
         private Int32 _target3;
         private Int32 _target4;
+        public int EnableButtons = 0;
 
         public int BufferCounter
         {
@@ -43,6 +49,30 @@ namespace ExoGUI.NetWork
                 _bufferCounter = value;
             }
         }
+        public int TrajectorySpeed
+        {
+            get
+            {
+                return _trajectory_speed;
+            }
+            set
+            {
+                _trajectory_speed = value;
+            }
+        }
+
+        public float TrajectoryGain
+        {
+            get
+            {
+                return _trajectory_gain;
+            }
+            set
+            {
+                _trajectory_gain = value;
+            }
+        }
+
         public float[,] BufferPos1
         {
             get
@@ -69,7 +99,7 @@ namespace ExoGUI.NetWork
                 _connection[X.BufferPos2] = _bufferPos2;
             }
         }
-       
+
         public bool ReadActualPos
         {
             get
@@ -81,9 +111,38 @@ namespace ExoGUI.NetWork
             {
                 _read_actual_pos = value;
                 _connection[X.ReadActualPos] = _read_actual_pos;
-               // OnPropertyChanged(nameof(ReadActualPos));
+                // OnPropertyChanged(nameof(ReadActualPos));
             }
         }
+
+        public bool ReachEndOfTraj
+        {
+            get
+            {
+                _reachEndOfTraj = (bool)_connection[X.ReachEndOfTraj];
+                return _reachEndOfTraj;
+            }
+            set
+            {
+                _reachEndOfTraj = value;
+                _connection[X.ReachEndOfTraj] = _reachEndOfTraj;
+            }
+        }
+
+        public UInt32 WhichEndOfTraj
+        {
+            get
+            {
+                _whichEndOfTraj = (UInt32)_connection[X.WhichEndOfTraj];
+                return _whichEndOfTraj;
+            }
+            set
+            {
+                _whichEndOfTraj = value;
+                _connection[X.WhichEndOfTraj] = _whichEndOfTraj;
+            }
+        }
+
         public int TargetPosition
         {
             get
@@ -202,19 +261,33 @@ namespace ExoGUI.NetWork
                 _connection[X.Position_mode_left_knee] = _position_mode_left_knee;
             }
         }
-        public UInt32 TrajLen
+        public UInt32 StartTrajLen
         {
             get
             {
-                _traj_len = (UInt32)_connection[X.TrajLen];
-                return _traj_len;
+                _start_traj_len = (UInt32)_connection[X.StartTrajLen];
+                return _start_traj_len;
             }
             set
             {
-                _traj_len = value;
-                _connection[X.TrajLen] = _traj_len;
+                _start_traj_len = value;
+                _connection[X.StartTrajLen] = _start_traj_len;
             }
         }
+        public UInt32 RightTrajLen
+        {
+            get
+            {
+                _right_traj_len = (UInt32)_connection[X.RightTrajLen];
+                return _right_traj_len;
+            }
+            set
+            {
+                _right_traj_len = value;
+                _connection[X.RightTrajLen] = _right_traj_len;
+            }
+        }
+
         public UInt32 BufferStatus
         {
             get
@@ -242,24 +315,71 @@ namespace ExoGUI.NetWork
             RightKneeDatalist.Add(Convert.ToSingle(values[3]));
         }
 
-        public void sendFirstBuffer()
+        public void sendStartTrajFirstBuffer(int speed)
         {
+            BufferCounter = 0;
             float[,] _buffer = new float[4, 500];
             float[,] _buffer2 = new float[4, 500];
             for (int i = 0; i < 500; i++)
             {
-                _buffer[0, i] = leftHipDatalist[i];
-                _buffer[1, i] = leftKneeDatalist[i];
-                _buffer[2, i] = RightHipDatalist[i];
-                _buffer[3, i] = RightKneeDatalist[i];
-                _buffer2[0, i] = leftHipDatalist[i+500];
-                _buffer2[1, i] = leftKneeDatalist[i+500];
-                _buffer2[2, i] = RightHipDatalist[i+500];
-                _buffer2[3, i] = RightKneeDatalist[i+500];
+                _buffer[0, i] = TrajectoryGain * leftHipDatalist[i * speed];
+                _buffer[1, i] = TrajectoryGain * leftKneeDatalist[i * speed];
+                _buffer[2, i] = TrajectoryGain * RightHipDatalist[i * speed];
+                _buffer[3, i] = TrajectoryGain * RightKneeDatalist[i * speed];
+                _buffer2[0, i] = TrajectoryGain * leftHipDatalist[(i+500) * speed];
+                _buffer2[1, i] = TrajectoryGain * leftKneeDatalist[(i + 500) * speed];
+                _buffer2[2, i] = TrajectoryGain * RightHipDatalist[(i + 500) * speed];
+                _buffer2[3, i] = TrajectoryGain * RightKneeDatalist[(i + 500) * speed];
             }
             BufferPos1 = _buffer;
             BufferPos2 = _buffer2;
-            BufferCounter = BufferCounter + 1000;
+            BufferCounter = (BufferCounter + 1000)*speed;
+        }
+
+        public void sendRightTrajFirstBuffer(int speed)
+        {
+            float[,] _buffer = new float[4, 500];
+            float[,] _buffer2 = new float[4, 500];
+            BufferCounter = Convert.ToInt32(_start_traj_len + _right_traj_len);
+            int j = Convert.ToInt32(_start_traj_len + _right_traj_len);
+            for (int i = 0; i < 500; i++)
+            {
+                _buffer[0, i] = TrajectoryGain * leftHipDatalist[j * speed];
+                _buffer[1, i] = TrajectoryGain * leftKneeDatalist[j * speed];
+                _buffer[2, i] = TrajectoryGain * RightHipDatalist[j * speed];
+                _buffer[3, i] = TrajectoryGain * RightKneeDatalist[j * speed];
+                _buffer2[0, i] = TrajectoryGain * leftHipDatalist[(j + 500) * speed];
+                _buffer2[1, i] = TrajectoryGain * leftKneeDatalist[(j + 500) * speed];
+                _buffer2[2, i] = TrajectoryGain * RightHipDatalist[(j + 500) * speed];
+                _buffer2[3, i] = TrajectoryGain * RightKneeDatalist[(j + 500) * speed];
+                j++;
+            }
+            BufferPos1 = _buffer;
+            BufferPos2 = _buffer2;
+            BufferCounter = (BufferCounter + 1000) * speed;
+        }
+
+        public void sendLeftTrajFirstBuffer(int speed)
+        {
+            float[,] _buffer = new float[4, 500];
+            float[,] _buffer2 = new float[4, 500];
+            BufferCounter = Convert.ToInt32(_start_traj_len);
+            int j = Convert.ToInt32(_start_traj_len);
+            for (int i = 0; i < 500; i++)
+            {
+                _buffer[0, i] = TrajectoryGain * leftHipDatalist[j * speed];
+                _buffer[1, i] = TrajectoryGain * leftKneeDatalist[j * speed];
+                _buffer[2, i] = TrajectoryGain * RightHipDatalist[j * speed];
+                _buffer[3, i] = TrajectoryGain * RightKneeDatalist[j * speed];
+                _buffer2[0, i] = TrajectoryGain * leftHipDatalist[(j + 500) * speed];
+                _buffer2[1, i] = TrajectoryGain * leftKneeDatalist[(j + 500) * speed];
+                _buffer2[2, i] = TrajectoryGain * RightHipDatalist[(j + 500) * speed];
+                _buffer2[3, i] = TrajectoryGain * RightKneeDatalist[(j + 500) * speed];
+                j++;
+            }
+            BufferPos1 = _buffer;
+            BufferPos2 = _buffer2;
+            BufferCounter = (BufferCounter + 1000) * speed;
         }
 
         private void CommonInitialize()
@@ -270,33 +390,67 @@ namespace ExoGUI.NetWork
 
         private void _connection_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == X.BufferStatus.ToString())
+            if (e.PropertyName == X.BufferStatus.ToString())
             {
-                float[,] _buffer = new float[4, 500];
-                if (BufferStatus == 1) // finish process buffer2 on beckhoff
+                if (!ReachEndOfTraj)
                 {
-                    for (int i = 0; i < 500; i++)
+                    float[,] _buffer = new float[4, 500];
+                    if (BufferStatus == 1) // finish process buffer2 on beckhoff
                     {
-                        _buffer[0, i] = leftHipDatalist[BufferCounter];
-                        _buffer[1, i] = leftKneeDatalist[BufferCounter];
-                        _buffer[2, i] = RightHipDatalist[BufferCounter];
-                        _buffer[3, i] = RightKneeDatalist[BufferCounter];
-                        BufferCounter++;
+                        for (int i = 0; i < 500; i++)
+                        {
+                            _buffer[0, i] = TrajectoryGain * leftHipDatalist[BufferCounter * TrajectorySpeed];
+                            _buffer[1, i] = TrajectoryGain * leftKneeDatalist[BufferCounter * TrajectorySpeed];
+                            _buffer[2, i] = TrajectoryGain * RightHipDatalist[BufferCounter * TrajectorySpeed];
+                            _buffer[3, i] = TrajectoryGain * RightKneeDatalist[BufferCounter * TrajectorySpeed];
+                            BufferCounter = BufferCounter + TrajectorySpeed;
+                        }
+                        BufferPos2 = _buffer;
                     }
-                    BufferPos2 = _buffer;
-                }
 
-                if (BufferStatus == 2) // finish process buffer1 on beckhoff
-                {
-                    for (int i = 0; i < 500; i++)
+                    if (BufferStatus == 2) // finish process buffer1 on beckhoff
                     {
-                        _buffer[0, i] = leftHipDatalist[BufferCounter];
-                        _buffer[1, i] = leftKneeDatalist[BufferCounter];
-                        _buffer[2, i] = RightHipDatalist[BufferCounter];
-                        _buffer[3, i] = RightKneeDatalist[BufferCounter];
-                        BufferCounter++;
+                        for (int i = 0; i < 500; i++)
+                        {
+                            _buffer[0, i] = TrajectoryGain * leftHipDatalist[BufferCounter * TrajectorySpeed];
+                            _buffer[1, i] = TrajectoryGain * leftKneeDatalist[BufferCounter * TrajectorySpeed];
+                            _buffer[2, i] = TrajectoryGain * RightHipDatalist[BufferCounter * TrajectorySpeed];
+                            _buffer[3, i] = TrajectoryGain * RightKneeDatalist[BufferCounter * TrajectorySpeed];
+                            BufferCounter = BufferCounter + TrajectorySpeed;
+                        }
+                        BufferPos1 = _buffer;
                     }
-                    BufferPos1 = _buffer;
+                }
+            }
+            else if(e.PropertyName == X.WhichEndOfTraj.ToString())
+            {
+                if (WhichEndOfTraj == 0)
+                {
+                    //mytraj.btn_left_traj.IsEnabled = false;
+                    //mytraj.btn_right_traj.IsEnabled = false;
+                    Console.WriteLine("start a traj");
+                }
+                else if (WhichEndOfTraj==1)
+                {
+                    //end of start trajectroy
+                    //mytraj.btn_left_traj.IsEnabled = true;
+                    //Trajectory.enableButtonsOnTrajEnd();
+                    EnableButtons = 1;
+                    Console.WriteLine("end of start trajectroy");
+                }
+                else if(WhichEndOfTraj==2)
+                {
+                    //end of left trajectroy
+                    //mytraj.btn_right_traj.IsEnabled = true;
+                    EnableButtons = 2;
+                    Console.WriteLine("end of left trajectroy");
+                }
+                else if(WhichEndOfTraj==3)
+                {
+                    //end of right trajectroy
+                    //mytraj.btn_left_traj.IsEnabled = true;
+                    EnableButtons = 3;
+                    Console.WriteLine("end of riight trajectroy");
                 }
             }
         }

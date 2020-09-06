@@ -418,9 +418,9 @@ namespace ExoGUI.MainSide
                     }
                 }
 
-                BeckhoffContext.Controller.TrajLen = (UInt32)trajLen;
+                //BeckhoffContext.Controller.TrajLen = (UInt32)trajLen;
                 
-                BeckhoffContext.Controller.sendFirstBuffer();
+                //BeckhoffContext.Controller.sendFirstBuffer();
             }
         }
 

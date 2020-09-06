@@ -20,9 +20,15 @@ namespace ExoGUI.NetWork
         [Type(TypeAttribute.Types.Real, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
         Position_mode_left_knee,
         [Type(TypeAttribute.Types.UDInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
-        TrajLen,
+        StartTrajLen,
+        [Type(TypeAttribute.Types.UDInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        RightTrajLen,
         [Type(TypeAttribute.Types.UDInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: true)]
         BufferStatus,
+        [Type(TypeAttribute.Types.Bool, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        ReachEndOfTraj,
+        [Type(TypeAttribute.Types.UDInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: true)]
+        WhichEndOfTraj,
         [Type(TypeAttribute.Types.Real, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
         BufferPos1,
         [Type(TypeAttribute.Types.Real, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
