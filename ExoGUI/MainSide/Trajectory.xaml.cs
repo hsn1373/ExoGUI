@@ -38,8 +38,6 @@ namespace ExoGUI.MainSide
                 cmb_speed.Items.Add(speed);
             }
             cmb_speed.Text = speeds[0];
-            
-
         }
 
         private void btn_select_file_Click(object sender, RoutedEventArgs e)
@@ -59,7 +57,6 @@ namespace ExoGUI.MainSide
                         var values = line.Split(',');
                         start_traj_len = Convert.ToUInt32(values[0]);
                         right_traj_len = Convert.ToUInt32(values[1]);
-                        //Console.WriteLine("start_traj_len: " + start_traj_len+ " right_traj_len: "+ right_traj_len+ " left_traj_len: "+ left_traj_len);
                         line = reader.ReadLine();
                         while (!reader.EndOfStream)
                         {
@@ -72,6 +69,7 @@ namespace ExoGUI.MainSide
                     BeckhoffContext.Controller.StartTrajLen = start_traj_len;
                     BeckhoffContext.Controller.RightTrajLen = right_traj_len;
                     btn_start_traj.IsEnabled = true;
+                    btn_contnious_trajectory.IsEnabled = true;
                 }
             }
             catch(Exception ex)
@@ -133,11 +131,6 @@ namespace ExoGUI.MainSide
             btn_left_traj.IsEnabled = false;
             BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["stop_trajectory"];
         }
-
-        //public static void enablebuttonsontrajend()
-        //{
-        //    btn_left_traj.isenabled = true;
-        //}
 
         private void txt_gain_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -238,6 +231,11 @@ namespace ExoGUI.MainSide
                         return;
                 }
             }
+        }
+
+        private void btn_contnious_trajectory_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

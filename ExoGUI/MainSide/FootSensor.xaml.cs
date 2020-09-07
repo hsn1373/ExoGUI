@@ -222,24 +222,8 @@ namespace ExoGUI.MainSide
                         string[] after_split = ReadLoadCellsFromUSB();
 
 
-                        //*********************Display to output for testing (temporary)**********************************
-                        //Console.WriteLine(loadcell_left_hip1 + "**" + loadcell_left_knee1 + "**" + loadcell_right_hip1 + "**" + loadcell_right_knee1);
-                        //Thread.Sleep(100);
-
-
-                        //*********************RecordedData**********************************
-                        //RecordData();
-
                         //*********************write to beckhoff*******************************
-                        //WriteLoadCellsToBeckhoff(left_front_sensor1, left_rear_sensor1, right_front_sensor1, right_rear_sensor1);
-
-
-
-                        //_connection[X.PreTimeFromPC] = tmpTime;
-                        //tmpTime = Convert.ToInt32(watch.ElapsedMilliseconds);
-                        //_connection[X.TimeFromPC] = tmpTime;
-                        //*******************************************************
-
+                        WriteLoadCellsToBeckhoff(left_front_sensor1, left_rear_sensor1, right_front_sensor1, right_rear_sensor1);
 
 
                         //*********************** Write LoadCells For Displaying********************************
@@ -248,8 +232,7 @@ namespace ExoGUI.MainSide
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("MRR:" + ex.Message);
-                        //Console.WriteLine("mrr");
+                        Console.WriteLine("HSN:" + ex.Message);
                     }
                 }
             }
@@ -271,10 +254,8 @@ namespace ExoGUI.MainSide
             string[] one_data_right = right_after_split[1].Split(' ');
             right_front_sensor1 = Convert.ToInt32(one_data_right[0]);
             right_rear_sensor1 = Convert.ToInt32(one_data_right[1]);
-
-
+            
             //***************
-            //test
             string[] final = { "0", "0", "0", "0" };
             List<string> li = new List<string>();
             li.Add(one_data_left[0]);
@@ -285,13 +266,15 @@ namespace ExoGUI.MainSide
             //***************
             return final;
         }
-        //public void WriteLoadCellsToBeckhoff(int _loadcell_left_hip1, int _loadcell_left_knee1, int _loadcell_right_hip1, int _loadcell_right_knee1)
-        //{
-        //    _connection[X.LoadcellLeftHip] = _loadcell_left_hip1;
-        //    _connection[X.LoadcellLeftKnee] = _loadcell_left_knee1;
-        //    _connection[X.LoadcellRightHip] = _loadcell_right_hip1;
-        //    _connection[X.LoadcellRightknee] = _loadcell_right_knee1;
-        //}
+
+        public void WriteLoadCellsToBeckhoff(int left_front_sensor1, int left_rear_sensor1, int right_front_sensor1, int right_rear_sensor1)
+        {
+            _connection[X.LeftFootFrontSensor] = left_front_sensor1;
+            _connection[X.LeftFootRearSensor] = left_rear_sensor1;
+            _connection[X.RightFootFrontSensor] = right_front_sensor1;
+            _connection[X.RightFootRearSensor] = right_rear_sensor1;
+        }
+
         public void WriteLoadCellForDisplaying(string[] after_split)
         {
             mut.WaitOne();

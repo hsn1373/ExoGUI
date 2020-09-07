@@ -60,6 +60,14 @@ namespace ExoGUI.NetWork
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
         LoadcellRightknee,
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        LeftFootFrontSensor,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        LeftFootRearSensor,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        RightFootFrontSensor,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        RightFootRearSensor,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
         TimeFromPC,
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
         PreTimeFromPC,
