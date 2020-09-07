@@ -44,37 +44,40 @@ namespace ExoGUI.MainSide
 
         private void btn_select_file_Click(object sender, RoutedEventArgs e)
         {
-            start_traj_len = 0;
-            right_traj_len = 0;
-            OpenFileDialog PositionTrajectoryFileDialog = new OpenFileDialog();
-            if (PositionTrajectoryFileDialog.ShowDialog() == true)
+            try
             {
-                string filePath = PositionTrajectoryFileDialog.FileName;
-
-                using (var reader = new StreamReader(filePath))
+                start_traj_len = 0;
+                right_traj_len = 0;
+                OpenFileDialog PositionTrajectoryFileDialog = new OpenFileDialog();
+                if (PositionTrajectoryFileDialog.ShowDialog() == true)
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    start_traj_len = Convert.ToUInt32(values[0]);
-                    right_traj_len = Convert.ToUInt32(values[1]);
-                    //Console.WriteLine("start_traj_len: " + start_traj_len+ " right_traj_len: "+ right_traj_len+ " left_traj_len: "+ left_traj_len);
-                    line = reader.ReadLine();
-                    while (!reader.EndOfStream)
-                    {
-                        line = reader.ReadLine();
-                        values = line.Split(',');
-                        BeckhoffContext.Controller.fillBuffers(values);
-                    }
-                }
-                
-                BeckhoffContext.Controller.StartTrajLen = start_traj_len;
-                BeckhoffContext.Controller.RightTrajLen = right_traj_len;
-            }
-        }
+                    string filePath = PositionTrajectoryFileDialog.FileName;
 
-        private void btn_trajectory_run_Click(object sender, RoutedEventArgs e)
-        {
-            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["position_mode_trajectory"];
+                    using (var reader = new StreamReader(filePath))
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        start_traj_len = Convert.ToUInt32(values[0]);
+                        right_traj_len = Convert.ToUInt32(values[1]);
+                        //Console.WriteLine("start_traj_len: " + start_traj_len+ " right_traj_len: "+ right_traj_len+ " left_traj_len: "+ left_traj_len);
+                        line = reader.ReadLine();
+                        while (!reader.EndOfStream)
+                        {
+                            line = reader.ReadLine();
+                            values = line.Split(',');
+                            BeckhoffContext.Controller.fillBuffers(values);
+                        }
+                    }
+
+                    BeckhoffContext.Controller.StartTrajLen = start_traj_len;
+                    BeckhoffContext.Controller.RightTrajLen = right_traj_len;
+                    btn_start_traj.IsEnabled = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_start_traj_Click(object sender, RoutedEventArgs e)

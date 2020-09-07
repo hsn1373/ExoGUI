@@ -118,30 +118,34 @@ namespace ExoGUI
             //Application.Current.Dispatcher.Invoke(new Action(() =>
             //{
             //    mut.WaitOne();
-                if (btn_turn_on.Content.ToString() == "TURN ON")
-                {
-                    LoadCell.open_port();
-                    Home.turn_on_flag = true;
-                    LoadCell.read_flag = true;
-                    btn_turn_on.Content = "TURN OFF";
-                    btn_turn_on.Background = (System.Windows.Media.Brush)Application.Current.Resources["SuccessBrush"];
-                    btn_record.IsEnabled = true;
-                    btn_run.IsEnabled = true;
-                    btn_clear.IsEnabled = true;
-                    btn_stop.IsEnabled = true;
-                }
-                else
-                {
-                    LoadCell.close_port();
-                    Home.turn_on_flag = false;
-                    LoadCell.read_flag = false;
-                    btn_turn_on.Content = "TURN ON";
-                    btn_turn_on.Background = (System.Windows.Media.Brush)Application.Current.Resources["WindowBackgroundColor"];
-                    btn_record.IsEnabled = false;
-                    btn_run.IsEnabled = false;
-                    btn_clear.IsEnabled = false;
-                    btn_stop.IsEnabled = false;
-                }
+            if (btn_turn_on.Content.ToString() == "TURN ON")
+            {
+                LoadCell.open_port();
+                Home.turn_on_flag = true;
+                LoadCell.read_flag = true;
+                FootSensor.open_port();
+                FootSensor.read_flag = true;
+                btn_turn_on.Content = "TURN OFF";
+                btn_turn_on.Background = (System.Windows.Media.Brush)Application.Current.Resources["SuccessBrush"];
+                btn_record.IsEnabled = true;
+                btn_run.IsEnabled = true;
+                btn_clear.IsEnabled = true;
+                btn_stop.IsEnabled = true;
+            }
+            else
+            {
+                LoadCell.close_port();
+                Home.turn_on_flag = false;
+                LoadCell.read_flag = false;
+                FootSensor.close_port();
+                FootSensor.read_flag = false;
+                btn_turn_on.Content = "TURN ON";
+                btn_turn_on.Background = (System.Windows.Media.Brush)Application.Current.Resources["WindowBackgroundColor"];
+                btn_record.IsEnabled = false;
+                btn_run.IsEnabled = false;
+                btn_clear.IsEnabled = false;
+                btn_stop.IsEnabled = false;
+            }
             //    mut.ReleaseMutex();
             //}));
         }

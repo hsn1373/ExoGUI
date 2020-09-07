@@ -38,7 +38,6 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
-                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="1" Grid.Row="1"
                            Foreground="{StaticResource WindowText}"
@@ -54,16 +53,6 @@
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_select_file"
                             Click="btn_select_file_Click">
-                    </Button>
-
-                    <Button Grid.Column="3"
-                            Grid.Row="1"
-                            Content="SUBMIT"
-                            Margin="2"
-                            Background="{StaticResource WindowBackgroundColor}"
-                            Foreground="{StaticResource TextBrush}"
-                            Name="btn_trajectory_run"
-                            Click="btn_trajectory_run_Click">
                     </Button>
                 </Grid>
             </Border>
@@ -196,6 +185,7 @@
                             Foreground="{StaticResource TextBrush}"
                             Background="Transparent"
                             Name="btn_start_traj"
+                            IsEnabled="False"
                             Click="btn_start_traj_Click">
                     </Button>
 

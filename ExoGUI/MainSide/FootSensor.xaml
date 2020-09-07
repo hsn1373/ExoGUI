@@ -41,25 +41,24 @@
                                Foreground="{StaticResource TextBrush}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Foot Sensor 1
+                               HorizontalContentAlignment="Center">Left Foot Front Sensor
                         </Label>
                     </Grid>
 
                     <Grid Grid.Row="1"
                           Margin="5">
-                        <lvc:CartesianChart Name="chrt_foot_sensor1"
+                        <lvc:CartesianChart Name="chrt_left_foot_front_sensor"
                                             Zoom="Xy"
                                             Series="{Binding SeriesCollection}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis MinValue="-5"
-                                          MaxValue="5"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="40000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis MinValue="0"
-                                          MaxValue="300"
+                                <lvc:Axis Labels="{Binding chtimes}"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
@@ -92,24 +91,23 @@
                                Foreground="{StaticResource TextBrush}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Foot Sensor 2
+                               HorizontalContentAlignment="Center">Right Foot Front Sensor
                         </Label>
                     </Grid>
                     <Grid Grid.Row="1"
                           Margin="5">
-                        <lvc:CartesianChart Name="chrt_foot_sensor2"
+                        <lvc:CartesianChart Name="chrt_right_foot_front_sensor"
                                             Zoom="Xy"
                                             Series="{Binding SeriesCollection2}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis MinValue="-5"
-                                          MaxValue="5"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="40000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis MinValue="0"
-                                          MaxValue="300"
+                                <lvc:Axis Labels="{Binding chtimes}"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
@@ -142,25 +140,24 @@
                                Foreground="{StaticResource TextBrush}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Foot Sensor 3
+                               HorizontalContentAlignment="Center">Left Foot Rear Sensor
                         </Label>
                     </Grid>
 
                     <Grid Grid.Row="1"
                           Margin="5">
-                        <lvc:CartesianChart Name="chrt_foot_sensor3"
+                        <lvc:CartesianChart Name="chrt_left_foot_rear_sensor"
                                             Zoom="Xy"
                                             Series="{Binding SeriesCollection3}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis MinValue="-5"
-                                          MaxValue="5"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="40000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis MinValue="0"
-                                          MaxValue="300"
+                                <lvc:Axis Labels="{Binding chtimes}"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
@@ -195,25 +192,24 @@
                                Foreground="{StaticResource TextBrush}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Foot Sensor 4
+                               HorizontalContentAlignment="Center">Right Foot Rear Sensor
                         </Label>
                     </Grid>
 
                     <Grid Grid.Row="1"
                           Margin="5">
-                        <lvc:CartesianChart Name="chrt_foot_sensor4"
+                        <lvc:CartesianChart Name="chrt_right_foot_rear_sensor"
                                             Zoom="Xy"
                                             Series="{Binding SeriesCollection4}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis MinValue="-5"
-                                          MaxValue="5"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="40000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis MinValue="0"
-                                          MaxValue="300"
+                                <lvc:Axis Labels="{Binding chtimes}"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
