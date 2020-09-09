@@ -243,7 +243,7 @@ namespace ExoGUI.MainSide
             line = line.Replace("\0", String.Empty);
             line = line.Replace("\r", String.Empty);
             string[] left_after_split = line.Split('\n');
-            string[] one_data_left = left_after_split[1].Split(' ');
+            string[] one_data_left = left_after_split[left_after_split.Length - 2].Split(' ');
             left_front_sensor1 = Convert.ToInt32(one_data_left[0]);
             left_rear_sensor1 = Convert.ToInt32(one_data_left[1]);
 
@@ -251,7 +251,7 @@ namespace ExoGUI.MainSide
             line = line.Replace("\0", String.Empty);
             line = line.Replace("\r", String.Empty);
             string[] right_after_split = line.Split('\n');
-            string[] one_data_right = right_after_split[1].Split(' ');
+            string[] one_data_right = right_after_split[right_after_split.Length - 2].Split(' ');
             right_front_sensor1 = Convert.ToInt32(one_data_right[0]);
             right_rear_sensor1 = Convert.ToInt32(one_data_right[1]);
             

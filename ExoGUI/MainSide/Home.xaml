@@ -16,7 +16,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="6.5*" />
                 <RowDefinition Height="6.5*" />
-                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
 
@@ -303,11 +302,10 @@
                                HorizontalContentAlignment="Center">Actual
                         </Label>
                         <Label Grid.Column="4"
-                                 Background="{StaticResource TextBoxBackground}"
-                                 VerticalContentAlignment="Center"
-                                 HorizontalContentAlignment="Center"
-                                 Name="txt_right_knee_actual"
-                                 >
+                               Background="{StaticResource TextBoxBackground}"
+                               VerticalContentAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               Name="txt_right_knee_actual">
                         </Label>
                     </Grid>
 
@@ -318,8 +316,7 @@
                                             Series="{Binding SeriesCollection4}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis
-                                          Title="Position">
+                                <lvc:Axis Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
@@ -329,56 +326,9 @@
                             </lvc:CartesianChart.AxisX>
                         </lvc:CartesianChart>
                     </Grid>
-                    
+
                 </Grid>
             </Border>
-            
-
-            <Grid Margin="5"
-                  Grid.Column="0"
-                  Grid.Row="4"
-                  Grid.ColumnSpan="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-
-                <Label Grid.Column="0"
-                       Foreground="{StaticResource WindowText}"
-                       VerticalContentAlignment="Center"
-                       Padding="0"
-                       HorizontalContentAlignment="Center">Select File</Label>
-
-                <Button Grid.Column="1"
-                        Content="BROWSE"
-                        Margin="2"
-                        Background="{StaticResource WindowBackgroundColor}"
-                        Foreground="{StaticResource TextBrush}"
-                        Name="btn_select_file"
-                        Click="btn_select_file_Click">
-                </Button>
-
-                <Button Grid.Column="2"
-                        Content="SUBMIT"
-                        Margin="2"
-                        Background="{StaticResource WindowBackgroundColor}"
-                        Foreground="{StaticResource TextBrush}"
-                        Name="btn_trajectory_run"
-                        Click="btn_trajectory_run_Click">
-                </Button>
-                <Button Grid.Column="3"
-                        Content="Go Home"
-                        Margin="2"
-                        Background="{StaticResource WindowBackgroundColor}"
-                        Foreground="{StaticResource TextBrush}"
-                        Name="btn_go_home"
-                        Click="btn_go_home_Click">
-                </Button>
-
-            </Grid>
 
             <!--<Button Grid.Column="3"
                     Content="STOP"

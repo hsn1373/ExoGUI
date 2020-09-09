@@ -428,6 +428,7 @@ namespace ExoGUI.NetWork
                 {
                     //mytraj.btn_left_traj.IsEnabled = false;
                     //mytraj.btn_right_traj.IsEnabled = false;
+                    EnableButtons = 0;
                     Console.WriteLine("start a traj");
                 }
                 else if (WhichEndOfTraj==1)
@@ -451,6 +452,10 @@ namespace ExoGUI.NetWork
                     //mytraj.btn_left_traj.IsEnabled = true;
                     EnableButtons = 3;
                     Console.WriteLine("end of riight trajectroy");
+                }
+                else if(WhichEndOfTraj == 4)
+                {
+                    EnableButtons = 4;
                 }
             }
         }

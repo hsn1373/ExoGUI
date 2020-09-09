@@ -25,7 +25,8 @@ namespace ExoGUI.NetWork
             {"right_trajectory",13},
             {"left_trajectory",14},
             {"stop_trajectory",15},
-            {"do_nothing",16}
+            {"continous_trajectory",16},
+            {"do_nothing",17}
         };
 
         public static string LoadCell_Com_Port_Name { get; set; }

@@ -397,47 +397,6 @@ namespace ExoGUI.MainSide
                 SeriesCollection4[0].Values.RemoveAt(0);
             }
         }
-
-        private void btn_select_file_Click(object sender, RoutedEventArgs e)
-        {
-            int trajLen = 0;
-            OpenFileDialog PositionTrajectoryFileDialog = new OpenFileDialog();
-            if (PositionTrajectoryFileDialog.ShowDialog() == true)
-            {
-                string filePath = PositionTrajectoryFileDialog.FileName;
-
-                using (var reader = new StreamReader(filePath))
-                {
-                    var line = reader.ReadLine();
-                    while (!reader.EndOfStream)
-                    {
-                        line = reader.ReadLine();
-                        var values = line.Split(',');
-                        BeckhoffContext.Controller.fillBuffers(values);
-                        trajLen++;
-                    }
-                }
-
-                //BeckhoffContext.Controller.TrajLen = (UInt32)trajLen;
-                
-                //BeckhoffContext.Controller.sendFirstBuffer();
-            }
-        }
-
-        private void btn_trajectory_run_Click(object sender, RoutedEventArgs e)
-        {
-            //BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["position_mode_trajectory"];
-            BeckhoffContext.Controller.Position_mode_right_hip = Convert.ToSingle(txt_right_hip_desire.Text);
-            BeckhoffContext.Controller.Position_mode_right_knee = Convert.ToSingle(txt_right_knee_desire.Text);
-            BeckhoffContext.Controller.Position_mode_left_hip = Convert.ToSingle(txt_left_hip_desire.Text);
-            BeckhoffContext.Controller.Position_mode_left_knee = Convert.ToSingle(txt_left_knee_desire.Text);
-            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["position_mode_point"];
-        }
-
-        private void btn_go_home_Click(object sender, RoutedEventArgs e)
-        {
-            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["home"];
-        }
     }
 
 }

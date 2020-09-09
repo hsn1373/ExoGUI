@@ -69,7 +69,6 @@ namespace ExoGUI.MainSide
                     BeckhoffContext.Controller.StartTrajLen = start_traj_len;
                     BeckhoffContext.Controller.RightTrajLen = right_traj_len;
                     btn_start_traj.IsEnabled = true;
-                    btn_contnious_trajectory.IsEnabled = true;
                 }
             }
             catch(Exception ex)
@@ -126,6 +125,7 @@ namespace ExoGUI.MainSide
         {
             BeckhoffContext.Controller.EnableButtons = 0;
             btn_start_traj.IsEnabled = true;
+            btn_contnious_trajectory.IsEnabled = false;
             btn_stop_traj.IsEnabled = false;
             btn_right_traj.IsEnabled = false;
             btn_left_traj.IsEnabled = false;
@@ -212,13 +212,14 @@ namespace ExoGUI.MainSide
                         Application.Current.Dispatcher.Invoke(new Action(() =>
                         {
                             btn_left_traj.IsEnabled = true;
+                            btn_contnious_trajectory.IsEnabled = true;
                         }));
                         th.Abort();
                         return;
                     case 2:
                         Application.Current.Dispatcher.Invoke(new Action(() =>
                         {
-                        btn_right_traj.IsEnabled = true;
+                            btn_right_traj.IsEnabled = true;
                         }));
                         th.Abort();
                         return;
@@ -229,13 +230,33 @@ namespace ExoGUI.MainSide
                         }));
                         th.Abort();
                         return;
+                    case 4:
+                        Application.Current.Dispatcher.Invoke(new Action(() =>
+                        {
+                            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["do_nothing"];
+                            BeckhoffContext.Controller.sendLeftTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
+                            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["continous_trajectory"];
+                        }));
+                        break;
                 }
             }
         }
 
         private void btn_contnious_trajectory_Click(object sender, RoutedEventArgs e)
         {
-
+            BeckhoffContext.Controller.EnableButtons = 0;
+            btn_contnious_trajectory.IsEnabled = false;
+            btn_left_traj.IsEnabled = false;
+            btn_start_traj.IsEnabled = false;
+            btn_stop_traj.IsEnabled = true;
+            btn_increase_gain.IsEnabled = true;
+            btn_decrease_gain.IsEnabled = true;
+            current_gain = txt_gain.Text;
+            BeckhoffContext.Controller.TrajectoryGain = float.Parse(txt_gain.Text);
+            BeckhoffContext.Controller.sendLeftTrajFirstBuffer(Convert.ToInt32(cmb_speed.Text));
+            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["continous_trajectory"];
+            th = new Thread(Run_Config_Buttons_Enable);
+            th.Start();
         }
     }
 }
