@@ -32,7 +32,7 @@ namespace ExoGUI.MainSide
         public Trajectory()
         {
             InitializeComponent();
-            string[] speeds = { "1", "2", "5", "10" };
+            string[] speeds = { "1", "2", "3", "4" };
             foreach (string speed in speeds)
             {
                 cmb_speed.Items.Add(speed);
