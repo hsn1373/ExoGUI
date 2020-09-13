@@ -34,13 +34,13 @@ namespace ExoGUI.MainSide
                 cmb_foot_sensor_right.Items.Add(port);
                 cmb_tredmil.Items.Add(port);
             }
-            //cmb_loadcells.Text = ports[1];
-            //BeckhoffContext.LoadCell_Com_Port_Name = cmb_loadcells.Text;
-            //cmb_foot_sensor_left.Text = ports[3];
-            //BeckhoffContext.FootSensorLeft_Com_Port_Name = cmb_foot_sensor_left.Text;
-            //cmb_foot_sensor_right.Text = ports[2];
-            //BeckhoffContext.FootSensorRight_Com_Port_Name = cmb_foot_sensor_right.Text;
-            //cmb_tredmil.Text = ports[0];
+            cmb_loadcells.Text = ports[1];
+            BeckhoffContext.LoadCell_Com_Port_Name = cmb_loadcells.Text;
+            cmb_foot_sensor_left.Text = ports[3];
+            BeckhoffContext.FootSensorLeft_Com_Port_Name = cmb_foot_sensor_left.Text;
+            cmb_foot_sensor_right.Text = ports[2];
+            BeckhoffContext.FootSensorRight_Com_Port_Name = cmb_foot_sensor_right.Text;
+            cmb_tredmil.Text = ports[0];
 
             BeckhoffContext.Assist_Algorithm = "zero_impedance";
 

@@ -163,7 +163,7 @@
                                FontSize="45"
                                FontFamily="Alexis"
                                FontWeight="ExtraBold"
-                               Foreground="Red"/>
+                               Foreground="Red" />
                     <TextBlock Text="u"
                                FontSize="45"
                                FontFamily="Alexis"
@@ -178,21 +178,8 @@
                                FontSize="45"
                                FontFamily="Alexis"
                                FontWeight="ExtraBold"
-                               Foreground="White"/>
+                               Foreground="White" />
                 </StackPanel>
-
-
-                <!--<TextBlock Text="fum exoskeleton II"
-                           Grid.Row="0"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="30"
-                           FontFamily="Alexis"
-                           FontWeight="ExtraBold">
-                    <Run Foreground="Gold">f</Run>
-                    <Run Foreground="Maroon">u</Run>
-                    <Run Foreground="Blue">m</Run>
-                </TextBlock>-->
 
                 <Grid Grid.Row="1">
                     <Grid
