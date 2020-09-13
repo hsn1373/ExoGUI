@@ -146,31 +146,80 @@
                 BorderThickness="1"
                 Margin="2"
                 Grid.Column="1">
-            <Grid>
-                <Grid Grid.Column="1"
-                      Name="grd_home"
-                      Visibility="Visible">
-                    <main:Home></main:Home>
-                </Grid>
-                <Grid Grid.Column="1"
-                      Name="grd_loadcell"
-                      Visibility="Hidden">
-                    <main:LoadCell></main:LoadCell>
-                </Grid>
-                <Grid Grid.Column="1"
-                      Name="grd_footsensor"
-                      Visibility="Hidden">
-                    <main:FootSensor></main:FootSensor>
-                </Grid>
-                <Grid Grid.Column="1"
-                      Name="grd_trajectory"
-                      Visibility="Hidden">
-                    <main:Trajectory></main:Trajectory>
-                </Grid>
-                <Grid Grid.Column="1"
-                      Name="grd_settings"
-                      Visibility="Hidden">
-                    <main:Settings></main:Settings>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="20*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="{StaticResource WindowBackgroundColor}">
+
+                    <TextBlock Text="  f"
+                               FontSize="45"
+                               FontFamily="Alexis"
+                               FontWeight="ExtraBold"
+                               Foreground="Red"/>
+                    <TextBlock Text="u"
+                               FontSize="45"
+                               FontFamily="Alexis"
+                               FontWeight="ExtraBold"
+                               Foreground="Yellow" />
+                    <TextBlock Text="m"
+                               FontSize="45"
+                               FontFamily="Alexis"
+                               FontWeight="ExtraBold"
+                               Foreground="Blue" />
+                    <TextBlock Text=" exoskeleton II  "
+                               FontSize="45"
+                               FontFamily="Alexis"
+                               FontWeight="ExtraBold"
+                               Foreground="White"/>
+                </StackPanel>
+
+
+                <!--<TextBlock Text="fum exoskeleton II"
+                           Grid.Row="0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="30"
+                           FontFamily="Alexis"
+                           FontWeight="ExtraBold">
+                    <Run Foreground="Gold">f</Run>
+                    <Run Foreground="Maroon">u</Run>
+                    <Run Foreground="Blue">m</Run>
+                </TextBlock>-->
+
+                <Grid Grid.Row="1">
+                    <Grid
+                          Name="grd_home"
+                          Visibility="Visible">
+                        <main:Home></main:Home>
+                    </Grid>
+                    <Grid
+                          Name="grd_loadcell"
+                          Visibility="Hidden">
+                        <main:LoadCell></main:LoadCell>
+                    </Grid>
+                    <Grid
+                          Name="grd_footsensor"
+                          Visibility="Hidden">
+                        <main:FootSensor></main:FootSensor>
+                    </Grid>
+                    <Grid 
+                          Name="grd_trajectory"
+                          Visibility="Hidden">
+                        <main:Trajectory></main:Trajectory>
+                    </Grid>
+                    <Grid
+                          Name="grd_settings"
+                          Visibility="Hidden">
+                        <main:Settings></main:Settings>
+                    </Grid>
                 </Grid>
             </Grid>
         </Border>
