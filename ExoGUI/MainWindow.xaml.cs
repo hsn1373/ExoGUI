@@ -120,11 +120,11 @@ namespace ExoGUI
             //    mut.WaitOne();
             if (btn_turn_on.Content.ToString() == "TURN ON")
             {
-                LoadCell.open_port();
+               // LoadCell.open_port();
                 Home.turn_on_flag = true;
-                LoadCell.read_flag = true;
-                FootSensor.open_port();
-                FootSensor.read_flag = true;
+                LoadCell.update_flag = true;
+                //FootSensor.open_port();
+                FootSensor.update_flag = true;
                 btn_turn_on.Content = "TURN OFF";
                 btn_turn_on.Background = (System.Windows.Media.Brush)Application.Current.Resources["SuccessBrush"];
                 btn_record.IsEnabled = true;
@@ -134,11 +134,11 @@ namespace ExoGUI
             }
             else
             {
-                LoadCell.close_port();
+                //LoadCell.close_port();
                 Home.turn_on_flag = false;
-                LoadCell.read_flag = false;
-                FootSensor.close_port();
-                FootSensor.read_flag = false;
+                LoadCell.update_flag = false;
+                //FootSensor.close_port();
+                FootSensor.update_flag = false;
                 btn_turn_on.Content = "TURN ON";
                 btn_turn_on.Background = (System.Windows.Media.Brush)Application.Current.Resources["WindowBackgroundColor"];
                 btn_record.IsEnabled = false;

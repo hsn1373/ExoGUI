@@ -364,7 +364,7 @@ namespace ExoGUI.MainSide
             chtimes.Add(chart_counter.ToString());
             chart_counter++;
 
-            if (SeriesCollection[0].Values.Count > 50)
+            if (SeriesCollection[0].Values.Count > 100)
             {
                 SeriesCollection[0].Values.RemoveAt(0);
                 chtimes.RemoveAt(0);
@@ -374,7 +374,7 @@ namespace ExoGUI.MainSide
         {
 
             SeriesCollection2[0].Values.Add(Convert.ToDouble(val));
-            if (SeriesCollection2[0].Values.Count > 50)
+            if (SeriesCollection2[0].Values.Count > 100)
             {
                 SeriesCollection2[0].Values.RemoveAt(0);
             }
@@ -383,7 +383,7 @@ namespace ExoGUI.MainSide
         public void add_data_to_charts3(string val)
         {
             SeriesCollection3[0].Values.Add(Convert.ToDouble(val));
-            if (SeriesCollection3[0].Values.Count > 50)
+            if (SeriesCollection3[0].Values.Count > 100)
             {
                 SeriesCollection3[0].Values.RemoveAt(0);
             }
@@ -392,10 +392,24 @@ namespace ExoGUI.MainSide
         public void add_data_to_charts4(string val)
         {
             SeriesCollection4[0].Values.Add(Convert.ToDouble(val));
-            if (SeriesCollection4[0].Values.Count > 50)
+            if (SeriesCollection4[0].Values.Count > 100)
             {
                 SeriesCollection4[0].Values.RemoveAt(0);
             }
+        }
+
+        private void btn_go_home_Click(object sender, RoutedEventArgs e)
+        {
+            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["home"];
+        }
+
+        private void btn_go_desired_Click(object sender, RoutedEventArgs e)
+        {
+            _connection[X.Position_mode_left_hip] = float.Parse(txt_left_hip_desire.Text);
+            _connection[X.Position_mode_left_knee] = float.Parse(txt_left_knee_desire.Text);
+            _connection[X.Position_mode_right_hip] = float.Parse(txt_right_hip_desire.Text);
+            _connection[X.Position_mode_right_knee] = float.Parse(txt_right_knee_desire.Text);
+            BeckhoffContext.Controller.Gui_manager = BeckhoffContext.gui_manager_keys["position_mode_point"];
         }
     }
 

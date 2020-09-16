@@ -52,8 +52,8 @@
                                             Series="{Binding SeriesCollection}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis MinValue="8000"
-                                          MaxValue="17000"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="2000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
@@ -101,8 +101,8 @@
                                             Series="{Binding SeriesCollection2}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis MinValue="8000"
-                                          MaxValue="17000"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="2000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
@@ -151,8 +151,8 @@
                                             Series="{Binding SeriesCollection3}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis MinValue="8000"
-                                          MaxValue="17000"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="2000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
@@ -203,8 +203,8 @@
                                             Series="{Binding SeriesCollection4}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis MinValue="8000"
-                                          MaxValue="17000"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="2000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
