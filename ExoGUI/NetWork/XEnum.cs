@@ -92,7 +92,11 @@ namespace ExoGUI.NetWork
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
         LoadCellValBuffer2,
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
-        LoadCellValBuffer3
+        LoadCellValBuffer3,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        FootSensorBuffer1,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        FootSensorBuffer2
 
     }
 }

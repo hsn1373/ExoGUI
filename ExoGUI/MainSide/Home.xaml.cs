@@ -47,6 +47,20 @@ namespace ExoGUI.MainSide
         public static List<Int32> LoadCell3RecordedData = new List<Int32>();
         public static List<Int32> LoadCell4RecordedData = new List<Int32>();
 
+        public static List<Int32> FootSensor1RecordedData = new List<Int32>();
+        public static List<Int32> FootSensor2RecordedData = new List<Int32>();
+        public static List<Int32> FootSensor3RecordedData = new List<Int32>();
+        public static List<Int32> FootSensor4RecordedData = new List<Int32>();
+
+        public static bool[] PositionActualRecordStatus = { false, false, false, false };
+        public static bool[] CurrentActualRecordStatus = { false, false, false, false };
+        public static bool[] LoadCellActualRecordStatus = { false, false, false, false };
+        public static bool[] FootSensorActualRecordStatus = { false, false, false, false };
+        public static bool[] PositionDesiredRecordStatus = { false, false, false, false };
+        public static bool[] LoadCellDesiredRecordStatus = { false, false, false, false };
+        public static bool[] EmgRightRecordStatus = { false, false, false, false };
+        public static bool[] EmgLeftRecordStatus = { false, false, false, false };
+
         public List<string> chtimes { get; set; }
 
         public static int chart_counter = 0;
@@ -289,24 +303,31 @@ namespace ExoGUI.MainSide
                             Int32[] BufferLoadCell1 = new Int32[500];
                             BufferLoadCell1 = (Int32[])_connection[X.LoadCellValBuffer1];
 
+                            Int32[] BufferFootSensor1 = new Int32[500];
+                            BufferFootSensor1 = (Int32[])_connection[X.FootSensorBuffer1];
+
                             for (int i = 0; i < 500; )
                             {
                                 ActualPos1RecordedData.Add(BufferActualPos1[i]);
                                 CurrentVal1RecordedData.Add(BufferCurrentVal1[i]);
-                                LoadCell1RecordedData.Add(BufferLoadCell1[i++]);
+                                LoadCell1RecordedData.Add(BufferLoadCell1[i]);
+                                FootSensor1RecordedData.Add(BufferFootSensor1[i++]);
 
                                 ActualPos2RecordedData.Add(BufferActualPos1[i]);
                                 CurrentVal2RecordedData.Add(BufferCurrentVal1[i]);
-                                LoadCell2RecordedData.Add(BufferLoadCell1[i++]);
+                                LoadCell2RecordedData.Add(BufferLoadCell1[i]);
+                                FootSensor2RecordedData.Add(BufferFootSensor1[i++]);
 
                                 ActualPos3RecordedData.Add(BufferActualPos1[i]);
                                 CurrentVal3RecordedData.Add(BufferCurrentVal1[i]);
-                                LoadCell3RecordedData.Add(BufferLoadCell1[i++]);
+                                LoadCell3RecordedData.Add(BufferLoadCell1[i]);
+                                FootSensor3RecordedData.Add(BufferFootSensor1[i++]);
 
 
                                 ActualPos4RecordedData.Add(BufferActualPos1[i]);
                                 CurrentVal4RecordedData.Add(BufferCurrentVal1[i]);
-                                LoadCell4RecordedData.Add(BufferLoadCell1[i++]);
+                                LoadCell4RecordedData.Add(BufferLoadCell1[i]);
+                                FootSensor4RecordedData.Add(BufferFootSensor1[i++]);
                             }
                             //Console.WriteLine("mrr0-1: " + BufferActualPos1[0].ToString());
                             //Console.WriteLine("mrr499-1: " + BufferActualPos1[499].ToString());
@@ -323,23 +344,30 @@ namespace ExoGUI.MainSide
                             Int32[] BufferLoadCell2 = new Int32[500];
                             BufferLoadCell2 = (Int32[])_connection[X.LoadCellValBuffer2];
 
+                            Int32[] BufferFootSensor2 = new Int32[500];
+                            BufferFootSensor2 = (Int32[])_connection[X.FootSensorBuffer2];
+
                             for (int i = 0; i < 500; )
                             {
                                 ActualPos1RecordedData.Add(BufferActualPos2[i]);
                                 CurrentVal1RecordedData.Add(BufferCurrentVal2[i]);
-                                LoadCell1RecordedData.Add(BufferLoadCell2[i++]);
+                                LoadCell1RecordedData.Add(BufferLoadCell2[i]);
+                                FootSensor1RecordedData.Add(BufferFootSensor2[i++]);
 
                                 ActualPos2RecordedData.Add(BufferActualPos2[i]);
                                 CurrentVal2RecordedData.Add(BufferCurrentVal2[i]);
-                                LoadCell2RecordedData.Add(BufferLoadCell2[i++]);
+                                LoadCell2RecordedData.Add(BufferLoadCell2[i]);
+                                FootSensor2RecordedData.Add(BufferFootSensor2[i++]);
 
                                 ActualPos3RecordedData.Add(BufferActualPos2[i]);
                                 CurrentVal3RecordedData.Add(BufferCurrentVal2[i]);
-                                LoadCell3RecordedData.Add(BufferLoadCell2[i++]);
+                                LoadCell3RecordedData.Add(BufferLoadCell2[i]);
+                                FootSensor3RecordedData.Add(BufferFootSensor2[i++]);
 
                                 ActualPos4RecordedData.Add(BufferActualPos2[i]);
                                 CurrentVal4RecordedData.Add(BufferCurrentVal2[i]);
-                                LoadCell4RecordedData.Add(BufferLoadCell2[i++]);
+                                LoadCell4RecordedData.Add(BufferLoadCell2[i]);
+                                FootSensor4RecordedData.Add(BufferFootSensor2[i++]);
                             }
                             //Console.WriteLine("mrr0-2: " + BufferActualPos2[0].ToString());
                             //Console.WriteLine("mrr499-2: " + BufferActualPos2[499].ToString());
