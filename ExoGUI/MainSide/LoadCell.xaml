@@ -59,7 +59,8 @@
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Labels="{Binding chtimes}"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="100"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
@@ -108,7 +109,8 @@
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Labels="{Binding chtimes}"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="100"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
@@ -158,7 +160,8 @@
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Labels="{Binding chtimes}"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="100"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
@@ -210,13 +213,14 @@
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Labels="{Binding chtimes}"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="100"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
                         </lvc:CartesianChart>
                     </Grid>
-
+                    <!--Labels="{Binding chtimes}"-->
                 </Grid>
             </Border>
 

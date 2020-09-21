@@ -11,6 +11,7 @@
     <Color x:Key="WarningColor">#ffc36d</Color>
     <Color x:Key="InnerBackground">#3c4452</Color>
     <SolidColorBrush x:Key="TextBrush">#fefefe</SolidColorBrush>
+    <SolidColorBrush x:Key="ActiveButton">#008080</SolidColorBrush>
     <SolidColorBrush x:Key="DangerBrush">#ff0000</SolidColorBrush>
     <SolidColorBrush x:Key="InfoBrush">#2cabe3</SolidColorBrush>
     <SolidColorBrush x:Key="SuccessBrush">#53e69d</SolidColorBrush>

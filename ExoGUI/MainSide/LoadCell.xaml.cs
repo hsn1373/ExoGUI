@@ -67,36 +67,68 @@ namespace ExoGUI.MainSide
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0} ,
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Title = "Desired",
+                    Values = new ChartValues<double> {0} ,
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             SeriesCollection2 = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0},
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Title = "Desired",
+                    Values = new ChartValues<double> {0} ,
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             SeriesCollection3 = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0},
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Title = "Desired",
+                    Values = new ChartValues<double> {0} ,
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             SeriesCollection4 = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0},
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Title = "Desired",
+                    Values = new ChartValues<double> {0} ,
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             DataContext = this;
@@ -110,7 +142,7 @@ namespace ExoGUI.MainSide
                 {
                     try
                     {
-                        add_data_to_chart1(_connection[X.LoadcellLeftHip].ToString());
+                        add_data_to_chart1(_connection[X.LoadcellLeftHip].ToString(), _connection[X.loadCellDesiredVal1].ToString());
                     }
                     catch (Exception ex)
                     {
@@ -128,7 +160,7 @@ namespace ExoGUI.MainSide
                 {
                     try
                     {
-                        add_data_to_chart2(_connection[X.LoadcellRightHip].ToString());
+                        add_data_to_chart2(_connection[X.LoadcellRightHip].ToString(), _connection[X.loadCellDesiredVal2].ToString());
 
                     }
                     catch (Exception ex)
@@ -147,7 +179,7 @@ namespace ExoGUI.MainSide
                 {
                     try
                     {
-                        add_data_to_chart3(_connection[X.LoadcellLeftKnee].ToString());
+                        add_data_to_chart3(_connection[X.LoadcellLeftKnee].ToString(), _connection[X.loadCellDesiredVal3].ToString());
 
                     }
                     catch (Exception ex)
@@ -166,7 +198,7 @@ namespace ExoGUI.MainSide
                 {
                     try
                     {
-                        add_data_to_chart4(_connection[X.LoadcellRightknee].ToString());
+                        add_data_to_chart4(_connection[X.LoadcellRightknee].ToString(), _connection[X.loadCellDesiredVal4].ToString());
                     }
                     catch (Exception ex)
                     {
@@ -176,47 +208,64 @@ namespace ExoGUI.MainSide
             }
         }
 
-        public void add_data_to_chart1(string val)
+        public void add_data_to_chart1(string val,string val2)
         {
             SeriesCollection[0].Values.Add(Convert.ToDouble(val));
+            SeriesCollection[1].Values.Add(Convert.ToDouble(val2));
             chtimes.Add(chart_counter.ToString());
             chart_counter++;
 
-            if (SeriesCollection[0].Values.Count > 100)
+            //if (SeriesCollection[0].Values.Count > 100)
+            //{
+            //    SeriesCollection[0].Values.RemoveAt(0);
+            //    chtimes.RemoveAt(0);
+            //}
+            if (chart_counter == 100)
             {
-                SeriesCollection[0].Values.RemoveAt(0);
-                chtimes.RemoveAt(0);
+                SeriesCollection[0].Values.Clear();
+                SeriesCollection2[0].Values.Clear();
+                SeriesCollection3[0].Values.Clear();
+                SeriesCollection4[0].Values.Clear();
+                SeriesCollection[1].Values.Clear();
+                SeriesCollection2[1].Values.Clear();
+                SeriesCollection3[1].Values.Clear();
+                SeriesCollection4[1].Values.Clear();
+                chart_counter = 0;
             }
         }
 
-        public void add_data_to_chart2(string val)
+        public void add_data_to_chart2(string val, string val2)
         {
             SeriesCollection2[0].Values.Add(Convert.ToDouble(val));
+            SeriesCollection2[1].Values.Add(Convert.ToDouble(val2));
 
-            if (SeriesCollection2[0].Values.Count > 100)
-            {
-                SeriesCollection2[0].Values.RemoveAt(0);
-            }
+            //if (SeriesCollection2[0].Values.Count > 100)
+            //{
+            //    SeriesCollection2[0].Values.RemoveAt(0);
+            //    chtimes.RemoveAt(0);
+            //}
         }
 
-        public void add_data_to_chart3(string val)
+        public void add_data_to_chart3(string val, string val2)
         {
             SeriesCollection3[0].Values.Add(Convert.ToDouble(val));
+            SeriesCollection3[1].Values.Add(Convert.ToDouble(val2));
 
-            if (SeriesCollection3[0].Values.Count > 100)
-            {
-                SeriesCollection3[0].Values.RemoveAt(0);
-            }
+            //if (SeriesCollection3[0].Values.Count > 100)
+            //{
+            //    SeriesCollection3[0].Values.RemoveAt(0);
+            //}
         }
 
-        public void add_data_to_chart4(string val)
+        public void add_data_to_chart4(string val, string val2)
         {
             SeriesCollection4[0].Values.Add(Convert.ToDouble(val));
+            SeriesCollection4[1].Values.Add(Convert.ToDouble(val2));
 
-            if (SeriesCollection4[0].Values.Count > 100)
-            {
-                SeriesCollection4[0].Values.RemoveAt(0);
-            }
+            //if (SeriesCollection4[0].Values.Count > 100)
+            //{
+            //    SeriesCollection4[0].Values.RemoveAt(0);
+            //}
         }
     }
 }

@@ -52,6 +52,22 @@ namespace ExoGUI.NetWork
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
         TargetData4,
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        PositionDesiredVal1,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        PositionDesiredVal2,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        PositionDesiredVal3,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        PositionDesiredVal4,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        loadCellDesiredVal1,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        loadCellDesiredVal2,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        loadCellDesiredVal3,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
+        loadCellDesiredVal4,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
         LoadcellLeftHip,
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, sourceFunction: "GVL", notify: false)]
         LoadcellLeftKnee,
@@ -96,7 +112,22 @@ namespace ExoGUI.NetWork
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
         FootSensorBuffer1,
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
-        FootSensorBuffer2
-
+        FootSensorBuffer2,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        PositionDesiredValBuffer1,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        PositionDesiredValBuffer2,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        LoadCellDesiredValBuffer1,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        LoadCellDesiredValBuffer2,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        EMGRightValBuffer1,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        EMGRightValBuffer2,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        EMGLeftValBuffer1,
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        EMGLeftValBuffer2
     }
 }

@@ -35,9 +35,9 @@
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
 
@@ -52,7 +52,7 @@
                                Foreground="{StaticResource WindowText}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Desire
+                               HorizontalContentAlignment="Center">Desired (Degree)
                         </Label>
                         <TextBox Grid.Column="2"
                                  Background="{StaticResource TextBoxBackground}"
@@ -65,7 +65,7 @@
                                Foreground="{StaticResource WindowText}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Actual
+                               HorizontalContentAlignment="Center">Actual (Degree)
                         </Label>
                         <Label Grid.Column="4"
                                  Background="{StaticResource TextBoxBackground}"
@@ -84,11 +84,12 @@
                                             >
                             <lvc:CartesianChart.AxisY>
                                 <lvc:Axis
-                                    Title="Position">
+                                    Title="Position(Degree)">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Labels="{Binding chtimes}" Title="Time">
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="50" Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
                         </lvc:CartesianChart>
@@ -113,9 +114,9 @@
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
 
@@ -130,7 +131,7 @@
                                Foreground="{StaticResource WindowText}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Desire
+                               HorizontalContentAlignment="Center">Desired (Degree)
                         </Label>
                         <TextBox Grid.Column="2"
                                  Background="{StaticResource TextBoxBackground}"
@@ -143,7 +144,7 @@
                                Foreground="{StaticResource WindowText}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Actual
+                               HorizontalContentAlignment="Center">Actual (Degree)
                         </Label>
                         <Label Grid.Column="4"
                                  Background="{StaticResource TextBoxBackground}"
@@ -160,12 +161,13 @@
                                             Series="{Binding SeriesCollection2}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis Title="Position">
+                                <lvc:Axis Title="Position(Degree)">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis   Labels="{Binding chtimes}"
-                                          Title="Time">
+                                <lvc:Axis   MinValue="0"
+                                            MaxValue="50"
+                                            Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
                         </lvc:CartesianChart>
@@ -190,9 +192,9 @@
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
 
@@ -207,7 +209,7 @@
                                Foreground="{StaticResource WindowText}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Desire
+                               HorizontalContentAlignment="Center">Desired (Degree)
                         </Label>
                         <TextBox Grid.Column="2"
                                  Background="{StaticResource TextBoxBackground}"
@@ -220,7 +222,7 @@
                                Foreground="{StaticResource WindowText}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Actual
+                               HorizontalContentAlignment="Center">Actual (Degree)
                         </Label>
                         <Label Grid.Column="4"
                                  Background="{StaticResource TextBoxBackground}"
@@ -238,12 +240,13 @@
                                             Series="{Binding SeriesCollection3}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis Title="Position">
+                                <lvc:Axis Title="Position(Degree)">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis   Labels="{Binding chtimes}"
-                                          Title="Time">
+                                <lvc:Axis   MinValue="0"
+                                            MaxValue="50"
+                                            Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
                         </lvc:CartesianChart>
@@ -270,9 +273,9 @@
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
 
@@ -287,7 +290,7 @@
                                Foreground="{StaticResource WindowText}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Desire
+                               HorizontalContentAlignment="Center">Desired (Degree)
                         </Label>
                         <TextBox Grid.Column="2"
                                  Background="{StaticResource TextBoxBackground}"
@@ -300,7 +303,7 @@
                                Foreground="{StaticResource WindowText}"
                                VerticalContentAlignment="Center"
                                Padding="0"
-                               HorizontalContentAlignment="Center">Actual
+                               HorizontalContentAlignment="Center">Actual (Degree)
                         </Label>
                         <Label Grid.Column="4"
                                Background="{StaticResource TextBoxBackground}"
@@ -317,11 +320,12 @@
                                             Series="{Binding SeriesCollection4}"
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis Title="Position">
+                                <lvc:Axis Title="Position(Degree)">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Labels="{Binding chtimes}"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="50"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
@@ -350,7 +354,7 @@
                 </Button>
 
                 <Button Grid.Column="2"
-                        Content="Go Desire"
+                        Content="Go Desired"
                         Margin="1"
                         Background="{StaticResource WindowBackgroundColor}"
                         Foreground="{StaticResource TextBrush}"

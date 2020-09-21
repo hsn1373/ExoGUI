@@ -88,7 +88,7 @@
                            Foreground="{StaticResource WindowText}"
                            VerticalContentAlignment="Center"
                            Padding="0"
-                           HorizontalContentAlignment="Center">Gain
+                           HorizontalContentAlignment="Center">Stride Length (cm)
                     </Label>
                     <TextBox Grid.Column="2"
                              Grid.Row="1"
@@ -137,7 +137,7 @@
                            Foreground="{StaticResource WindowText}"
                            VerticalContentAlignment="Center"
                            Padding="0"
-                           HorizontalContentAlignment="Center">Speed
+                           HorizontalContentAlignment="Center">Walking Speed
                     </Label>
                     <ComboBox Grid.Column="5"
                               Grid.Row="1"
@@ -223,7 +223,7 @@
                             Style="{DynamicResource RoundCorner}"
                             Width="128"
                             Height="128"
-                            Content="STOP"
+                            Content="STAND POS"
                             Margin="2"
                             Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"

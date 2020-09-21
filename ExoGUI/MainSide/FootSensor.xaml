@@ -53,12 +53,13 @@
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
                                 <lvc:Axis MinValue="0"
-                                          MaxValue="2000"
+                                          MaxValue="10000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Labels="{Binding chtimes}"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="100"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
@@ -102,12 +103,13 @@
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
                                 <lvc:Axis MinValue="0"
-                                          MaxValue="2000"
+                                          MaxValue="10000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Labels="{Binding chtimes}"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="100"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
@@ -152,12 +154,13 @@
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
                                 <lvc:Axis MinValue="0"
-                                          MaxValue="2000"
+                                          MaxValue="10000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Labels="{Binding chtimes}"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="100"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>
@@ -204,12 +207,13 @@
                                             LegendLocation="Right">
                             <lvc:CartesianChart.AxisY>
                                 <lvc:Axis MinValue="0"
-                                          MaxValue="2000"
+                                          MaxValue="10000"
                                           Title="Position">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Labels="{Binding chtimes}"
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="100"
                                           Title="Time">
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisX>

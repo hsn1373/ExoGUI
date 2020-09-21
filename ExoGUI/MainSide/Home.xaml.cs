@@ -52,6 +52,26 @@ namespace ExoGUI.MainSide
         public static List<Int32> FootSensor3RecordedData = new List<Int32>();
         public static List<Int32> FootSensor4RecordedData = new List<Int32>();
 
+        public static List<Int32> PositionDesired1RecordedData = new List<Int32>();
+        public static List<Int32> PositionDesired2RecordedData = new List<Int32>();
+        public static List<Int32> PositionDesired3RecordedData = new List<Int32>();
+        public static List<Int32> PositionDesired4RecordedData = new List<Int32>();
+
+        public static List<Int32> LoadCellDesired1RecordedData = new List<Int32>();
+        public static List<Int32> LoadCellDesired2RecordedData = new List<Int32>();
+        public static List<Int32> LoadCellDesired3RecordedData = new List<Int32>();
+        public static List<Int32> LoadCellDesired4RecordedData = new List<Int32>();
+
+        public static List<Int32> EMGRight1RecordedData = new List<Int32>();
+        public static List<Int32> EMGRight2RecordedData = new List<Int32>();
+        public static List<Int32> EMGRight3RecordedData = new List<Int32>();
+        public static List<Int32> EMGRight4RecordedData = new List<Int32>();
+
+        public static List<Int32> EMGLeft1RecordedData = new List<Int32>();
+        public static List<Int32> EMGLeft2RecordedData = new List<Int32>();
+        public static List<Int32> EMGLeft3RecordedData = new List<Int32>();
+        public static List<Int32> EMGLeft4RecordedData = new List<Int32>();
+
         public static bool[] PositionActualRecordStatus = { false, false, false, false };
         public static bool[] CurrentActualRecordStatus = { false, false, false, false };
         public static bool[] LoadCellActualRecordStatus = { false, false, false, false };
@@ -118,36 +138,68 @@ namespace ExoGUI.MainSide
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0} ,
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Title = "Desired",
+                    Values = new ChartValues<double> {0} ,
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             SeriesCollection2 = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0},
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Title = "Desired",
+                    Values = new ChartValues<double> {0} ,
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             SeriesCollection3 = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0},
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Title = "Desired",
+                    Values = new ChartValues<double> {0} ,
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             SeriesCollection4 = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0},
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
+                },
+                new LineSeries
+                {
+                    Title = "Desired",
+                    Values = new ChartValues<double> {0} ,
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
 
@@ -161,10 +213,12 @@ namespace ExoGUI.MainSide
                 if (update_flag)
                 {
                     string tmp = ((int)_connection[X.TargetData]).ToString();
-                    add_data_to_charts(tmp);
+                    string tmp2 = ((int)_connection[X.PositionDesiredVal1]).ToString();
+                    add_data_to_charts(tmp,tmp2);
                     Application.Current.Dispatcher.Invoke(new Action(() =>
                     {
                         txt_left_hip_actual.Content = tmp;
+                        txt_left_hip_desire.Text = tmp2;
                     }));
                     update_flag = false;
                 }
@@ -177,10 +231,12 @@ namespace ExoGUI.MainSide
                 if (update_flag)
                 {
                     string tmp1 = ((int)_connection[X.TargetData2]).ToString();
-                    add_data_to_charts2(tmp1);
+                    string tmp2 = ((int)_connection[X.PositionDesiredVal2]).ToString();
+                    add_data_to_charts2(tmp1,tmp2);
                     Application.Current.Dispatcher.Invoke(new Action(() =>
                     {
                         txt_right_hip_actual.Content = tmp1;
+                        txt_right_hip_desire.Text = tmp2;
                     }));
                     update_flag = false;
                 }
@@ -192,11 +248,13 @@ namespace ExoGUI.MainSide
             {
                 if (update_flag)
                 {
-                    string tmp2 = ((int)_connection[X.TargetData3]).ToString();
-                    add_data_to_charts3(tmp2);
+                    string tmp1 = ((int)_connection[X.TargetData3]).ToString();
+                    string tmp2 = ((int)_connection[X.PositionDesiredVal3]).ToString();
+                    add_data_to_charts3(tmp1,tmp2);
                     Application.Current.Dispatcher.Invoke(new Action(() =>
                     {
-                        txt_left_knee_actual.Content = tmp2;
+                        txt_left_knee_actual.Content = tmp1;
+                        txt_left_knee_desire.Text = tmp2;
                     }));
                     update_flag = false;
                 }
@@ -208,11 +266,13 @@ namespace ExoGUI.MainSide
             {
                 if (update_flag)
                 {
-                    string tmp3 = ((int)_connection[X.TargetData4]).ToString();
-                    add_data_to_charts4(tmp3);
+                    string tmp1 = ((int)_connection[X.TargetData4]).ToString();
+                    string tmp2 = ((int)_connection[X.PositionDesiredVal4]).ToString();
+                    add_data_to_charts4(tmp1,tmp2);
                     Application.Current.Dispatcher.Invoke(new Action(() =>
                     {
-                        txt_right_knee_actual.Content = tmp3;
+                        txt_right_knee_actual.Content = tmp1;
+                        txt_right_knee_desire.Text = tmp2;
                     }));
                     update_flag = false;
                 }
@@ -295,39 +355,76 @@ namespace ExoGUI.MainSide
                         {
                             
                             Int32[] BufferActualPos1 = new Int32[500];
-                            BufferActualPos1 = (Int32[])_connection[X.PositionActualValBuffer1];
-
                             Int16[] BufferCurrentVal1 = new Int16[500];
-                            BufferCurrentVal1 = (Int16[])_connection[X.CurrentValBuffer1];
-
                             Int32[] BufferLoadCell1 = new Int32[500];
-                            BufferLoadCell1 = (Int32[])_connection[X.LoadCellValBuffer1];
-
                             Int32[] BufferFootSensor1 = new Int32[500];
-                            BufferFootSensor1 = (Int32[])_connection[X.FootSensorBuffer1];
+                            Int32[] BufferpositionDesired1 = new Int32[500];
+                            Int32[] BufferLoadCellDesired1 = new Int32[500];
+                            Int32[] BufferEmgRight1 = new Int32[500];
+                            Int32[] BufferEmgLeft1 = new Int32[500];
+
+                            if(PositionActualRecordStatus[0]|| PositionActualRecordStatus[1]|| PositionActualRecordStatus[2]|| PositionActualRecordStatus[3])
+                                BufferActualPos1 = (Int32[])_connection[X.PositionActualValBuffer1];
+
+                            if (CurrentActualRecordStatus[0] || CurrentActualRecordStatus[1] || CurrentActualRecordStatus[2] || CurrentActualRecordStatus[3])
+                                BufferCurrentVal1 = (Int16[])_connection[X.CurrentValBuffer1];
+
+                            if (LoadCellActualRecordStatus[0] || LoadCellActualRecordStatus[1] || LoadCellActualRecordStatus[2] || LoadCellActualRecordStatus[3])
+                                BufferLoadCell1 = (Int32[])_connection[X.LoadCellValBuffer1];
+
+                            if (FootSensorActualRecordStatus[0] || FootSensorActualRecordStatus[1] || FootSensorActualRecordStatus[2] || FootSensorActualRecordStatus[3])
+                                BufferFootSensor1 = (Int32[])_connection[X.FootSensorBuffer1];
+
+                            if (PositionDesiredRecordStatus[0] || PositionDesiredRecordStatus[1] || PositionDesiredRecordStatus[2] || PositionDesiredRecordStatus[3])
+                                BufferpositionDesired1 = (Int32[])_connection[X.PositionDesiredValBuffer1];
+
+                            if (LoadCellDesiredRecordStatus[0] || LoadCellDesiredRecordStatus[1] || LoadCellDesiredRecordStatus[2] || LoadCellDesiredRecordStatus[3])
+                                BufferLoadCellDesired1 = (Int32[])_connection[X.LoadCellDesiredValBuffer1];
+
+                            if (EmgRightRecordStatus[0] || EmgRightRecordStatus[1] || EmgRightRecordStatus[2] || EmgRightRecordStatus[3])
+                                BufferEmgRight1 = (Int32[])_connection[X.EMGRightValBuffer1];
+
+                            if (EmgLeftRecordStatus[0] || EmgLeftRecordStatus[1] || EmgLeftRecordStatus[2] || EmgLeftRecordStatus[3])
+                                BufferEmgLeft1 = (Int32[])_connection[X.EMGLeftValBuffer1];
 
                             for (int i = 0; i < 500; )
                             {
                                 ActualPos1RecordedData.Add(BufferActualPos1[i]);
                                 CurrentVal1RecordedData.Add(BufferCurrentVal1[i]);
                                 LoadCell1RecordedData.Add(BufferLoadCell1[i]);
-                                FootSensor1RecordedData.Add(BufferFootSensor1[i++]);
+                                FootSensor1RecordedData.Add(BufferFootSensor1[i]);
+                                PositionDesired1RecordedData.Add(BufferpositionDesired1[i]);
+                                LoadCellDesired1RecordedData.Add(BufferLoadCellDesired1[i]);
+                                EMGRight1RecordedData.Add(BufferEmgRight1[i]);
+                                EMGLeft1RecordedData.Add(BufferEmgLeft1[i++]);
 
                                 ActualPos2RecordedData.Add(BufferActualPos1[i]);
                                 CurrentVal2RecordedData.Add(BufferCurrentVal1[i]);
                                 LoadCell2RecordedData.Add(BufferLoadCell1[i]);
-                                FootSensor2RecordedData.Add(BufferFootSensor1[i++]);
+                                FootSensor2RecordedData.Add(BufferFootSensor1[i]);
+                                PositionDesired2RecordedData.Add(BufferpositionDesired1[i]);
+                                LoadCellDesired2RecordedData.Add(BufferLoadCellDesired1[i]);
+                                EMGRight2RecordedData.Add(BufferEmgRight1[i]);
+                                EMGLeft2RecordedData.Add(BufferEmgLeft1[i++]);
 
                                 ActualPos3RecordedData.Add(BufferActualPos1[i]);
                                 CurrentVal3RecordedData.Add(BufferCurrentVal1[i]);
                                 LoadCell3RecordedData.Add(BufferLoadCell1[i]);
-                                FootSensor3RecordedData.Add(BufferFootSensor1[i++]);
+                                FootSensor3RecordedData.Add(BufferFootSensor1[i]);
+                                PositionDesired3RecordedData.Add(BufferpositionDesired1[i]);
+                                LoadCellDesired3RecordedData.Add(BufferLoadCellDesired1[i]);
+                                EMGRight3RecordedData.Add(BufferEmgRight1[i]);
+                                EMGLeft3RecordedData.Add(BufferEmgLeft1[i++]);
 
 
                                 ActualPos4RecordedData.Add(BufferActualPos1[i]);
                                 CurrentVal4RecordedData.Add(BufferCurrentVal1[i]);
                                 LoadCell4RecordedData.Add(BufferLoadCell1[i]);
-                                FootSensor4RecordedData.Add(BufferFootSensor1[i++]);
+                                FootSensor4RecordedData.Add(BufferFootSensor1[i]);
+                                PositionDesired4RecordedData.Add(BufferpositionDesired1[i]);
+                                LoadCellDesired4RecordedData.Add(BufferLoadCellDesired1[i]);
+                                EMGRight4RecordedData.Add(BufferEmgRight1[i]);
+                                EMGLeft4RecordedData.Add(BufferEmgLeft1[i++]);
                             }
                             //Console.WriteLine("mrr0-1: " + BufferActualPos1[0].ToString());
                             //Console.WriteLine("mrr499-1: " + BufferActualPos1[499].ToString());
@@ -336,38 +433,75 @@ namespace ExoGUI.MainSide
                         else if (ff == 1)
                         {
                             Int32[] BufferActualPos2 = new Int32[500];
-                            BufferActualPos2 = (Int32[])_connection[X.PositionActualValBuffer2];
-
                             Int16[] BufferCurrentVal2 = new Int16[500];
-                            BufferCurrentVal2 = (Int16[])_connection[X.CurrentValBuffer2];
-
                             Int32[] BufferLoadCell2 = new Int32[500];
-                            BufferLoadCell2 = (Int32[])_connection[X.LoadCellValBuffer2];
-
                             Int32[] BufferFootSensor2 = new Int32[500];
-                            BufferFootSensor2 = (Int32[])_connection[X.FootSensorBuffer2];
+                            Int32[] BufferpositionDesired2 = new Int32[500];
+                            Int32[] BufferLoadCellDesired2 = new Int32[500];
+                            Int32[] BufferEmgRight2 = new Int32[500];
+                            Int32[] BufferEmgLeft2 = new Int32[500];
+
+                            if (PositionActualRecordStatus[0] || PositionActualRecordStatus[1] || PositionActualRecordStatus[2] || PositionActualRecordStatus[3])
+                                BufferActualPos2 = (Int32[])_connection[X.PositionActualValBuffer2];
+
+                            if (CurrentActualRecordStatus[0] || CurrentActualRecordStatus[1] || CurrentActualRecordStatus[2] || CurrentActualRecordStatus[3])
+                                BufferCurrentVal2 = (Int16[])_connection[X.CurrentValBuffer2];
+
+                            if (LoadCellActualRecordStatus[0] || LoadCellActualRecordStatus[1] || LoadCellActualRecordStatus[2] || LoadCellActualRecordStatus[3])
+                                BufferLoadCell2 = (Int32[])_connection[X.LoadCellValBuffer2];
+
+                            if (FootSensorActualRecordStatus[0] || FootSensorActualRecordStatus[1] || FootSensorActualRecordStatus[2] || FootSensorActualRecordStatus[3])
+                                BufferFootSensor2 = (Int32[])_connection[X.FootSensorBuffer2];
+
+                            if (PositionDesiredRecordStatus[0] || PositionDesiredRecordStatus[1] || PositionDesiredRecordStatus[2] || PositionDesiredRecordStatus[3])
+                                BufferpositionDesired2 = (Int32[])_connection[X.PositionDesiredValBuffer2];
+
+                            if (LoadCellDesiredRecordStatus[0] || LoadCellDesiredRecordStatus[1] || LoadCellDesiredRecordStatus[2] || LoadCellDesiredRecordStatus[3])
+                                BufferLoadCellDesired2 = (Int32[])_connection[X.LoadCellDesiredValBuffer2];
+
+                            if (EmgRightRecordStatus[0] || EmgRightRecordStatus[1] || EmgRightRecordStatus[2] || EmgRightRecordStatus[3])
+                                BufferEmgRight2 = (Int32[])_connection[X.EMGRightValBuffer2];
+
+                            if (EmgLeftRecordStatus[0] || EmgLeftRecordStatus[1] || EmgLeftRecordStatus[2] || EmgLeftRecordStatus[3])
+                                BufferEmgLeft2 = (Int32[])_connection[X.EMGLeftValBuffer2];
 
                             for (int i = 0; i < 500; )
                             {
                                 ActualPos1RecordedData.Add(BufferActualPos2[i]);
                                 CurrentVal1RecordedData.Add(BufferCurrentVal2[i]);
                                 LoadCell1RecordedData.Add(BufferLoadCell2[i]);
-                                FootSensor1RecordedData.Add(BufferFootSensor2[i++]);
+                                FootSensor1RecordedData.Add(BufferFootSensor2[i]);
+                                PositionDesired1RecordedData.Add(BufferpositionDesired2[i]);
+                                LoadCellDesired1RecordedData.Add(BufferLoadCellDesired2[i]);
+                                EMGRight1RecordedData.Add(BufferEmgRight2[i]);
+                                EMGLeft1RecordedData.Add(BufferEmgLeft2[i++]);
 
                                 ActualPos2RecordedData.Add(BufferActualPos2[i]);
                                 CurrentVal2RecordedData.Add(BufferCurrentVal2[i]);
                                 LoadCell2RecordedData.Add(BufferLoadCell2[i]);
-                                FootSensor2RecordedData.Add(BufferFootSensor2[i++]);
+                                FootSensor2RecordedData.Add(BufferFootSensor2[i]);
+                                PositionDesired2RecordedData.Add(BufferpositionDesired2[i]);
+                                LoadCellDesired2RecordedData.Add(BufferLoadCellDesired2[i]);
+                                EMGRight2RecordedData.Add(BufferEmgRight2[i]);
+                                EMGLeft2RecordedData.Add(BufferEmgLeft2[i++]);
 
                                 ActualPos3RecordedData.Add(BufferActualPos2[i]);
                                 CurrentVal3RecordedData.Add(BufferCurrentVal2[i]);
                                 LoadCell3RecordedData.Add(BufferLoadCell2[i]);
-                                FootSensor3RecordedData.Add(BufferFootSensor2[i++]);
+                                FootSensor3RecordedData.Add(BufferFootSensor2[i]);
+                                PositionDesired3RecordedData.Add(BufferpositionDesired2[i]);
+                                LoadCellDesired3RecordedData.Add(BufferLoadCellDesired2[i]);
+                                EMGRight3RecordedData.Add(BufferEmgRight2[i]);
+                                EMGLeft3RecordedData.Add(BufferEmgLeft2[i++]);
 
                                 ActualPos4RecordedData.Add(BufferActualPos2[i]);
                                 CurrentVal4RecordedData.Add(BufferCurrentVal2[i]);
                                 LoadCell4RecordedData.Add(BufferLoadCell2[i]);
-                                FootSensor4RecordedData.Add(BufferFootSensor2[i++]);
+                                FootSensor4RecordedData.Add(BufferFootSensor2[i]);
+                                PositionDesired4RecordedData.Add(BufferpositionDesired2[i]);
+                                LoadCellDesired4RecordedData.Add(BufferLoadCellDesired2[i]);
+                                EMGRight4RecordedData.Add(BufferEmgRight2[i]);
+                                EMGLeft4RecordedData.Add(BufferEmgLeft2[i++]);
                             }
                             //Console.WriteLine("mrr0-2: " + BufferActualPos2[0].ToString());
                             //Console.WriteLine("mrr499-2: " + BufferActualPos2[499].ToString());
@@ -386,44 +520,60 @@ namespace ExoGUI.MainSide
 
 
 
-        public void add_data_to_charts(string val)
+        public void add_data_to_charts(string val, string val2)
         {
             SeriesCollection[0].Values.Add(Convert.ToDouble(val));
+            SeriesCollection[1].Values.Add(Convert.ToDouble(val2));
             chtimes.Add(chart_counter.ToString());
             chart_counter++;
 
-            if (SeriesCollection[0].Values.Count > 100)
+            //if (SeriesCollection[0].Values.Count > 100)
+            //{
+            //    SeriesCollection[0].Values.RemoveAt(0);
+            //    chtimes.RemoveAt(0);
+            //}
+            if (chart_counter == 50)
             {
-                SeriesCollection[0].Values.RemoveAt(0);
-                chtimes.RemoveAt(0);
+                SeriesCollection[0].Values.Clear();
+                SeriesCollection2[0].Values.Clear();
+                SeriesCollection3[0].Values.Clear();
+                SeriesCollection4[0].Values.Clear();
+                SeriesCollection[1].Values.Clear();
+                SeriesCollection2[1].Values.Clear();
+                SeriesCollection3[1].Values.Clear();
+                SeriesCollection4[1].Values.Clear();
+                chart_counter = 0;
             }
         }
-        public void add_data_to_charts2(string val)
+        public void add_data_to_charts2(string val, string val2)
         {
 
             SeriesCollection2[0].Values.Add(Convert.ToDouble(val));
-            if (SeriesCollection2[0].Values.Count > 100)
-            {
-                SeriesCollection2[0].Values.RemoveAt(0);
-            }
+            SeriesCollection2[1].Values.Add(Convert.ToDouble(val2));
+            //if (SeriesCollection2[0].Values.Count > 100)
+            //{
+            //    SeriesCollection2[0].Values.RemoveAt(0);
+            //}
         }
 
-        public void add_data_to_charts3(string val)
+        public void add_data_to_charts3(string val, string val2)
         {
             SeriesCollection3[0].Values.Add(Convert.ToDouble(val));
-            if (SeriesCollection3[0].Values.Count > 100)
-            {
-                SeriesCollection3[0].Values.RemoveAt(0);
-            }
+            SeriesCollection3[1].Values.Add(Convert.ToDouble(val2));
+            //if (SeriesCollection3[0].Values.Count > 100)
+            //{
+            //    SeriesCollection3[0].Values.RemoveAt(0);
+            //}
         }
 
-        public void add_data_to_charts4(string val)
+        public void add_data_to_charts4(string val, string val2)
         {
             SeriesCollection4[0].Values.Add(Convert.ToDouble(val));
-            if (SeriesCollection4[0].Values.Count > 100)
-            {
-                SeriesCollection4[0].Values.RemoveAt(0);
-            }
+            SeriesCollection4[1].Values.Add(Convert.ToDouble(val2));
+            //if (SeriesCollection4[0].Values.Count > 100)
+            //{
+            //    SeriesCollection4[0].Values.RemoveAt(0);
+            //}
         }
 
         private void btn_go_home_Click(object sender, RoutedEventArgs e)

@@ -10,120 +10,128 @@
         Height="650"
         Width="1200">
     <Grid Margin="2">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="9*" />
-        </Grid.ColumnDefinitions>
-        <Border BorderBrush="{StaticResource WindowBackgroundColor}"
-                BorderThickness="1"
-                Margin="2"
-                Grid.Column="0">
+        <Grid Name="main_grid"
+              Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="9*" />
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="{StaticResource WindowBackgroundColor}"
+                    BorderThickness="1"
+                    Margin="2"
+                    Grid.Column="0">
 
-            <Grid Grid.Column="0"
-                  Margin="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-                <Button Content="HOME"
+                <Grid Grid.Column="0"
+                      Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Button Content="MOTOR POSITION"
                             Margin="1"
                             Grid.Row="0"
-                            Background="{StaticResource WindowBackgroundColor}"
+                            Background="{StaticResource ActiveButton}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_go_home"
                             Click="btn_go_home_Click">
                     </Button>
                     <Button Content="LOAD CELL"
-                        Margin="1"
-                        Grid.Row="1"
-                        Background="{StaticResource WindowBackgroundColor}"
+                            Margin="1"
+                            Grid.Row="1"
+                            Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_load_cell"
                             Click="btn_load_cell_Click">
                     </Button>
                     <Button Content="FOOT SENSOR"
-                        Margin="1"
-                        Grid.Row="2"
-                        Background="{StaticResource WindowBackgroundColor}"
+                            Margin="1"
+                            Grid.Row="2"
+                            Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_foot_sensor"
                             Click="btn_foot_sensor_Click">
                     </Button>
-                <Button Content="TRAJECTORY"
-                        Margin="1"
-                        Grid.Row="3"
-                        Background="{StaticResource WindowBackgroundColor}"
-                        Foreground="{StaticResource TextBrush}"
-                        Name="btn_trajectory"
-                        Click="btn_trajectory_Click">
-                </Button>
-                <Button Content="SETTINGS"
-                        Margin="1"
-                        Grid.Row="4"
-                        Background="{StaticResource WindowBackgroundColor}"
-                        Foreground="{StaticResource TextBrush}"
-                        Name="btn_settings"
-                        Click="btn_settings_Click">
-                </Button>
-                <Rectangle Grid.Row="5">
-                </Rectangle>
-                <Button Content="RECORD"
-                        IsEnabled="True"
-                        Margin="1"
-                        Grid.Row="6"
-                        Background="{StaticResource WindowBackgroundColor}"
-                        Foreground="{StaticResource TextBrush}"
-                        Name="btn_record"
-                        Click="btn_record_Click">
-                </Button>
-                <Rectangle Grid.Row="7">
-                </Rectangle>
-                <Button Content="TURN ON"
-                        Margin="1"
-                        Grid.Row="8"
-                        Background="{StaticResource WindowBackgroundColor}"
-                        Foreground="{StaticResource TextBrush}"
-                        Name="btn_turn_on"
-                        Click="btn_turn_on_Click">
-                </Button>
-                <Button Content="RUN DRIVERS"
-                        IsEnabled="False"
-                        Margin="1"
-                        Grid.Row="9"
-                        Background="{StaticResource WindowBackgroundColor}"
+                    <Button Content="TRAJECTORY"
+                            Margin="1"
+                            Grid.Row="3"
+                            Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_trajectory"
+                            Click="btn_trajectory_Click">
+                    </Button>
+                    <Button Content="ASSISTIVE ALGORITHMS"
+                            Margin="1"
+                            Grid.Row="4"
+                            Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_settings"
+                            Click="btn_settings_Click">
+                    </Button>
+                    <Rectangle Grid.Row="5">
+                    </Rectangle>
+                    <Button Content="RECORD"
+                            IsEnabled="False"
+                            Margin="1"
+                            Grid.Row="6"
+                            Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_record"
+                            Click="btn_record_Click">
+                    </Button>
+                    <!--<Button Content="START"
+                            Margin="1"
+                            Grid.Row="8"
+                            Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_turn_on"
+                            Click="btn_turn_on_Click">
+                    </Button>-->
+                    <Button Content="SETUP DRIVERS"
+                            IsEnabled="False"
+                            Margin="1"
+                            Grid.Row="8"
+                            Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_run"
                             Click="btn_run_Click">
-                </Button>
-                <Button Content="CLEAR"
-                        IsEnabled="False"
-                        Margin="1"
-                        Grid.Row="10"
-                        Background="{StaticResource WindowBackgroundColor}"
+                    </Button>
+                    <Button Content="MOTOR ERROR CLEAR"
+                            IsEnabled="False"
+                            Margin="1"
+                            Grid.Row="9"
+                            Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_clear"
                             Click="btn_clear_Click">
-                </Button>
-                <Button Content="STOP"
-                        IsEnabled="False"
-                        Margin="1"
-                        Grid.Row="11"
-                        Background="{StaticResource WindowBackgroundColor}"
+                    </Button>
+                    <Button Content="STOP"
+                            IsEnabled="False"
+                            Margin="1"
+                            Grid.Row="10"
+                            Background="{StaticResource WindowBackgroundColor}"
                             Foreground="{StaticResource TextBrush}"
                             Name="btn_stop"
                             Click="btn_stop_Click">
-                </Button>
-                <!--<Button Content="TORQUE"
+                    </Button>
+                    <Button Content="EXIT"
+                            Margin="1"
+                            Grid.Row="11"
+                            Background="{StaticResource WindowBackgroundColor}"
+                            Foreground="{StaticResource TextBrush}"
+                            Name="btn_exit"
+                            Click="btn_exit_Click">
+                    </Button>
+                    <!--<Button Content="TORQUE"
                             Margin="1"
                             Height="48"
                             Background="{StaticResource WindowBackgroundColor}"
@@ -139,284 +147,371 @@
                             Name="btn_plot"
                             Click="btn_plot_Click">
                     </Button>-->
-            </Grid>
-        </Border>
-
-        <Border BorderBrush="{StaticResource WindowBackgroundColor}"
-                BorderThickness="1"
-                Margin="2"
-                Grid.Column="1">
-
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="20*" />
-                </Grid.RowDefinitions>
-
-                <StackPanel Name="txt_fum"
-                            Orientation="Horizontal"
-                            Grid.Row="0"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Background="{StaticResource WindowBackgroundColor}">
-
-                    <TextBlock Text="  f"
-                               FontSize="45"
-                               FontFamily="Alexis"
-                               FontWeight="ExtraBold"
-                               Foreground="Red" />
-                    <TextBlock Text="u"
-                               FontSize="45"
-                               FontFamily="Alexis"
-                               FontWeight="ExtraBold"
-                               Foreground="Yellow" />
-                    <TextBlock Text="m"
-                               FontSize="45"
-                               FontFamily="Alexis"
-                               FontWeight="ExtraBold"
-                               Foreground="Blue" />
-                    <TextBlock Text=" exoskeleton II  "
-                               FontSize="45"
-                               FontFamily="Alexis"
-                               FontWeight="ExtraBold"
-                               Foreground="White" />
-                </StackPanel>
-
-                <Grid Grid.Row="1">
-                    <Grid
-                          Name="grd_home"
-                          Visibility="Visible">
-                        <main:Home></main:Home>
-                    </Grid>
-                    <Grid
-                          Name="grd_loadcell"
-                          Visibility="Hidden">
-                        <main:LoadCell></main:LoadCell>
-                    </Grid>
-                    <Grid
-                          Name="grd_footsensor"
-                          Visibility="Hidden">
-                        <main:FootSensor></main:FootSensor>
-                    </Grid>
-                    <Grid 
-                          Name="grd_trajectory"
-                          Visibility="Hidden">
-                        <main:Trajectory></main:Trajectory>
-                    </Grid>
-                    <Grid
-                          Name="grd_settings"
-                          Visibility="Hidden">
-                        <main:Settings></main:Settings>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Border>
-
-
-
-        <!--************************************************************-->
-        <!--************************************************************-->
-        <!--************************************************************-->
-        <!--************************************************************-->
-        <!--************************************************************-->
-        <!--************************************************************-->
-        
-
-        <!-- Record Settings Popup -->
-        <Popup Name="Record_popup"
-               PlacementTarget="{Binding ElementName = txt_fum}"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               Width="590"
-               Height="450"
-               AllowsTransparency="True"
-               PopupAnimation="Slide">
-            <Border BorderBrush="{DynamicResource TextBrush}"
-                    BorderThickness="1"
-                    Margin="3"
-                    Padding="2">
-                <Grid Background="{DynamicResource WindowBackgroundColor}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*" />
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="4*" />
-                        <ColumnDefinition Width="1*" />
-                    </Grid.ColumnDefinitions>
-
-                    <!--*********************************************-->
-                    <!--*********************************************-->
-
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
-
-                        <Button Content="P.D.V"
-                                Margin="1"
-                                Grid.Row="1"
-                                Background="{StaticResource WindowBackgroundColor}"
-                                Foreground="{StaticResource TextBrush}"
-                                Name="btn_popup_position_desire_value"
-                                Click="btn_popup_position_desire_value_Click">
-                        </Button>
-
-                        <Button Content="P.A.V"
-                                Margin="1"
-                                Grid.Row="2"
-                                Background="{StaticResource WindowBackgroundColor}"
-                                Foreground="{StaticResource TextBrush}"
-                                Name="btn_popup_position_actual_value"
-                                Click="btn_popup_position_actual_value_Click">
-                        </Button>
-
-                        <Button Content="LC.D.V"
-                                Margin="1"
-                                Grid.Row="3"
-                                Background="{StaticResource WindowBackgroundColor}"
-                                Foreground="{StaticResource TextBrush}"
-                                Name="btn_popup_loadcell_desire_value"
-                                Click="btn_popup_loadcell_desire_value_Click">
-                        </Button>
-
-                        <Button Content="LC.A.V"
-                                Margin="1"
-                                Grid.Row="4"
-                                Background="{StaticResource WindowBackgroundColor}"
-                                Foreground="{StaticResource TextBrush}"
-                                Name="btn_popup_loadcell_actual_value"
-                                Click="btn_popup_loadcell_actual_value_Click">
-                        </Button>
-
-                        <Button Content="C.A.V"
-                                Margin="1"
-                                Grid.Row="5"
-                                Background="{StaticResource WindowBackgroundColor}"
-                                Foreground="{StaticResource TextBrush}"
-                                Name="btn_popup_current_actual_value"
-                                Click="btn_popup_current_actual_value_Click">
-                        </Button>
-
-                        <Button Content="FS.A.V"
-                                Margin="1"
-                                Grid.Row="6"
-                                Background="{StaticResource WindowBackgroundColor}"
-                                Foreground="{StaticResource TextBrush}"
-                                Name="btn_popup_footsensor_actual_value"
-                                Click="btn_popup_footsensor_actual_value_Click">
-                        </Button>
-
-                        <Button Content="EMG R"
-                                Margin="1"
-                                Grid.Row="7"
-                                Background="{StaticResource WindowBackgroundColor}"
-                                Foreground="{StaticResource TextBrush}"
-                                Name="btn_popup_emg_right_value"
-                                Click="btn_popup_emg_right_value_Click">
-                        </Button>
-
-                        <Button Content="EMG L"
-                                Margin="1"
-                                Grid.Row="8"
-                                Background="{StaticResource WindowBackgroundColor}"
-                                Foreground="{StaticResource TextBrush}"
-                                Name="btn_popup_emg_left_value"
-                                Click="btn_popup_emg_left_value_Click">
-                        </Button>
-                    </Grid>
-
-                    <!--*********************************************-->
-                    <!--*********************************************-->
-
-                    <Grid Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="3*" />
-                        </Grid.RowDefinitions>
-
-                        <Grid Grid.Row="1"
-                              HorizontalAlignment="Center">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                            </Grid.RowDefinitions>
-
-                            <CheckBox Name="popup_chkbox_first"
-                                      Content="Position Actual Value 1"
-                                      Grid.Row="0"
-                                      Foreground="{StaticResource TextBrush}"
-                                      Click="popup_chkbox_first_Click"/>
-                            <CheckBox Name="popup_chkbox_second"
-                                      Content="Position Actual Value 2"
-                                      Grid.Row="1"
-                                      Foreground="{StaticResource TextBrush}"
-                                      Click="popup_chkbox_second_Click"/>
-                            <CheckBox Name="popup_chkbox_third"
-                                      Content="Position Actual Value 3"
-                                      Grid.Row="2"
-                                      Foreground="{StaticResource TextBrush}"
-                                      Click="popup_chkbox_third_Click"/>
-                            <CheckBox Name="popup_chkbox_forth"
-                                      Content="Position Actual Value 4"
-                                      Grid.Row="3"
-                                      Foreground="{StaticResource TextBrush}"
-                                      Click="popup_chkbox_forth_Click"/>
-
-
-                        </Grid>
-
-                        <Grid Grid.Row="2">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="3*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Button Content="Cancel"
-                                    Grid.Column="1"
-                                    Grid.Row="1"
-                                    Background="{DynamicResource WindowBackgroundColor}"
-                                    Foreground="{DynamicResource TextBrush}"
-                                    Name="btn_cancel_record_popup"
-                                    Margin="5"
-                                    Click="btn_cancel_record_popup_Click"
-                                    />
-                            <Button Content="OK"
-                                    Grid.Column="2"
-                                    Grid.Row="1"
-                                    Background="{DynamicResource WindowBackgroundColor}"
-                                    Foreground="{DynamicResource TextBrush}"
-                                    Name="btn_ok_record_popup"
-                                    Margin="5"
-                                    Click="btn_ok_record_popup_Click" />
-
-                        </Grid>
-
-                    </Grid>
-
-                    <!--*********************************************-->
-                    <!--*********************************************-->
-                    
                 </Grid>
             </Border>
-        </Popup>
+
+            <Border BorderBrush="{StaticResource WindowBackgroundColor}"
+                    BorderThickness="1"
+                    Margin="2"
+                    Grid.Column="1">
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="20*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Name="txt_fum"
+                                Orientation="Horizontal"
+                                Grid.Row="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="{StaticResource WindowBackgroundColor}">
+
+                        <TextBlock Text="  f"
+                                   FontSize="45"
+                                   FontFamily="Alexis"
+                                   FontWeight="ExtraBold"
+                                   Foreground="Red" />
+                        <TextBlock Text="u"
+                                   FontSize="45"
+                                   FontFamily="Alexis"
+                                   FontWeight="ExtraBold"
+                                   Foreground="Yellow" />
+                        <TextBlock Text="m"
+                                   FontSize="45"
+                                   FontFamily="Alexis"
+                                   FontWeight="ExtraBold"
+                                   Foreground="Blue" />
+                        <TextBlock Text=" exoskeleton II  "
+                                   FontSize="45"
+                                   FontFamily="Alexis"
+                                   FontWeight="ExtraBold"
+                                   Foreground="White" />
+                    </StackPanel>
+
+                    <Grid Grid.Row="1">
+                        <Grid Name="grd_home"
+                              Visibility="Visible">
+                            <main:Home></main:Home>
+                        </Grid>
+                        <Grid Name="grd_loadcell"
+                              Visibility="Hidden">
+                            <main:LoadCell></main:LoadCell>
+                        </Grid>
+                        <Grid Name="grd_footsensor"
+                              Visibility="Hidden">
+                            <main:FootSensor></main:FootSensor>
+                        </Grid>
+                        <Grid Name="grd_trajectory"
+                              Visibility="Hidden">
+                            <main:Trajectory></main:Trajectory>
+                        </Grid>
+                        <Grid Name="grd_settings"
+                              Visibility="Hidden">
+                            <main:Settings></main:Settings>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
 
 
+
+            <!--************************************************************-->
+            <!--************************************************************-->
+            <!--************************************************************-->
+            <!--************************************************************-->
+            <!--************************************************************-->
+            <!--************************************************************-->
+
+
+            <!-- Record Settings Popup -->
+            <Popup Name="Record_popup"
+                   PlacementTarget="{Binding ElementName = txt_fum}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Width="590"
+                   Height="450"
+                   AllowsTransparency="True"
+                   PopupAnimation="Slide">
+                <Border BorderBrush="{DynamicResource TextBrush}"
+                        BorderThickness="1"
+                        Margin="3"
+                        Padding="2">
+                    <Grid Background="{DynamicResource WindowBackgroundColor}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--*********************************************-->
+                        <!--*********************************************-->
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+
+                            <Button Content="P.D.V"
+                                    Margin="1"
+                                    Grid.Row="1"
+                                    Background="{StaticResource WindowBackgroundColor}"
+                                    Foreground="{StaticResource TextBrush}"
+                                    Name="btn_popup_position_desire_value"
+                                    Click="btn_popup_position_desire_value_Click">
+                            </Button>
+
+                            <Button Content="P.A.V"
+                                    Margin="1"
+                                    Grid.Row="2"
+                                    Background="{StaticResource WindowBackgroundColor}"
+                                    Foreground="{StaticResource TextBrush}"
+                                    Name="btn_popup_position_actual_value"
+                                    Click="btn_popup_position_actual_value_Click">
+                            </Button>
+
+                            <Button Content="LC.D.V"
+                                    Margin="1"
+                                    Grid.Row="3"
+                                    Background="{StaticResource WindowBackgroundColor}"
+                                    Foreground="{StaticResource TextBrush}"
+                                    Name="btn_popup_loadcell_desire_value"
+                                    Click="btn_popup_loadcell_desire_value_Click">
+                            </Button>
+
+                            <Button Content="LC.A.V"
+                                    Margin="1"
+                                    Grid.Row="4"
+                                    Background="{StaticResource WindowBackgroundColor}"
+                                    Foreground="{StaticResource TextBrush}"
+                                    Name="btn_popup_loadcell_actual_value"
+                                    Click="btn_popup_loadcell_actual_value_Click">
+                            </Button>
+
+                            <Button Content="C.A.V"
+                                    Margin="1"
+                                    Grid.Row="5"
+                                    Background="{StaticResource WindowBackgroundColor}"
+                                    Foreground="{StaticResource TextBrush}"
+                                    Name="btn_popup_current_actual_value"
+                                    Click="btn_popup_current_actual_value_Click">
+                            </Button>
+
+                            <Button Content="FS.A.V"
+                                    Margin="1"
+                                    Grid.Row="6"
+                                    Background="{StaticResource WindowBackgroundColor}"
+                                    Foreground="{StaticResource TextBrush}"
+                                    Name="btn_popup_footsensor_actual_value"
+                                    Click="btn_popup_footsensor_actual_value_Click">
+                            </Button>
+
+                            <Button Content="EMG R"
+                                    Margin="1"
+                                    Grid.Row="7"
+                                    Background="{StaticResource WindowBackgroundColor}"
+                                    Foreground="{StaticResource TextBrush}"
+                                    Name="btn_popup_emg_right_value"
+                                    Click="btn_popup_emg_right_value_Click">
+                            </Button>
+
+                            <Button Content="EMG L"
+                                    Margin="1"
+                                    Grid.Row="8"
+                                    Background="{StaticResource WindowBackgroundColor}"
+                                    Foreground="{StaticResource TextBrush}"
+                                    Name="btn_popup_emg_left_value"
+                                    Click="btn_popup_emg_left_value_Click">
+                            </Button>
+                        </Grid>
+
+                        <!--*********************************************-->
+                        <!--*********************************************-->
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="3*" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="1"
+                                  HorizontalAlignment="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                                <CheckBox Name="popup_chkbox_first"
+                                          Content="Position Actual Value 1"
+                                          Grid.Row="0"
+                                          Foreground="{StaticResource TextBrush}"
+                                          Click="popup_chkbox_first_Click" />
+                                <CheckBox Name="popup_chkbox_second"
+                                          Content="Position Actual Value 2"
+                                          Grid.Row="1"
+                                          Foreground="{StaticResource TextBrush}"
+                                          Click="popup_chkbox_second_Click" />
+                                <CheckBox Name="popup_chkbox_third"
+                                          Content="Position Actual Value 3"
+                                          Grid.Row="2"
+                                          Foreground="{StaticResource TextBrush}"
+                                          Click="popup_chkbox_third_Click" />
+                                <CheckBox Name="popup_chkbox_forth"
+                                          Content="Position Actual Value 4"
+                                          Grid.Row="3"
+                                          Foreground="{StaticResource TextBrush}"
+                                          Click="popup_chkbox_forth_Click" />
+
+
+                            </Grid>
+
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Button Content="Cancel"
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        Background="{DynamicResource WindowBackgroundColor}"
+                                        Foreground="{DynamicResource TextBrush}"
+                                        Name="btn_cancel_record_popup"
+                                        Margin="5"
+                                        Click="btn_cancel_record_popup_Click" />
+                                <Button Content="OK"
+                                        Grid.Column="2"
+                                        Grid.Row="1"
+                                        Background="{DynamicResource WindowBackgroundColor}"
+                                        Foreground="{DynamicResource TextBrush}"
+                                        Name="btn_ok_record_popup"
+                                        Margin="5"
+                                        Click="btn_ok_record_popup_Click" />
+
+                            </Grid>
+
+                        </Grid>
+
+                        <!--*********************************************-->
+                        <!--*********************************************-->
+
+                    </Grid>
+                </Border>
+            </Popup>
+
+
+        </Grid>
+
+
+
+        <!--********************************************************************************************-->
+        <!--********************************************************************************************-->
+        <!--********************************************************************************************-->
+        <!--********************************************************************************************-->
+
+
+        <Grid Name="demo_grid"
+              Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="9*" />
+                <RowDefinition Height="1.5*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Name="txt_fum_demo"
+                        Orientation="Horizontal"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="{StaticResource WindowBackgroundColor}">
+
+                <TextBlock Text="  f"
+                           FontSize="70"
+                           FontFamily="Alexis"
+                           FontWeight="ExtraBold"
+                           Foreground="Red" />
+                <TextBlock Text="u"
+                           FontSize="70"
+                           FontFamily="Alexis"
+                           FontWeight="ExtraBold"
+                           Foreground="Yellow" />
+                <TextBlock Text="m"
+                           FontSize="70"
+                           FontFamily="Alexis"
+                           FontWeight="ExtraBold"
+                           Foreground="Blue" />
+                <TextBlock Text=" exoskeleton II  "
+                           FontSize="70"
+                           FontFamily="Alexis"
+                           FontWeight="ExtraBold"
+                           Foreground="White" />
+            </StackPanel>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="1"
+                       Source="Images/exo1.bmp" />
+                <Image Grid.Column="3"
+                       Source="Images/exo2.bmp" />
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Button Content="start"
+                        Style="{DynamicResource RoundCorner}"
+                        Margin="1"
+                        Grid.Column="1"
+                        FontFamily="Alexis"
+                        FontSize="30"
+                        Background="{StaticResource WindowBackgroundColor}"
+                        Foreground="{StaticResource TextBrush}"
+                        Name="btn_start_main_grid"
+                        Click="btn_start_main_grid_Click">
+                </Button>
+            </Grid>
+
+
+        </Grid>
+
+        <!--********************************************************************************************-->
+        <!--********************************************************************************************-->
+        <!--********************************************************************************************-->
+        <!--********************************************************************************************-->
+        
     </Grid>
+
+
 </Window>

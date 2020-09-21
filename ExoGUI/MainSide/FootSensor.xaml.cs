@@ -64,36 +64,40 @@ namespace ExoGUI.MainSide
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0} ,
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             SeriesCollection2 = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0},
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             SeriesCollection3 = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0},
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             SeriesCollection4 = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
+                    Title = "Actual",
                     Values = new ChartValues<double> {0},
-                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None
+                    PointGeometry=LiveCharts.Wpf.DefaultGeometries.None,
+                    Fill=System.Windows.Media.Brushes.Transparent
                 }
             };
             DataContext = this;
@@ -180,41 +184,51 @@ namespace ExoGUI.MainSide
             chtimes.Add(chart_counter.ToString());
             chart_counter++;
 
-            if (SeriesCollection[0].Values.Count > 100)
+
+            if (chart_counter == 100)
             {
-                SeriesCollection[0].Values.RemoveAt(0);
-                chtimes.RemoveAt(0);
+                SeriesCollection[0].Values.Clear();
+                SeriesCollection2[0].Values.Clear();
+                SeriesCollection3[0].Values.Clear();
+                SeriesCollection4[0].Values.Clear();
+                chart_counter = 0;
             }
+
+            //if (SeriesCollection[0].Values.Count > 100)
+            //{
+            //    SeriesCollection[0].Values.RemoveAt(0);
+            //    chtimes.RemoveAt(0);
+            //}
         }
 
         public void add_data_to_chart2(string val)
         {
             SeriesCollection2[0].Values.Add(Convert.ToDouble(val));
 
-            if (SeriesCollection2[0].Values.Count > 100)
-            {
-                SeriesCollection2[0].Values.RemoveAt(0);
-            }
+            //if (SeriesCollection2[0].Values.Count > 100)
+            //{
+            //    SeriesCollection2[0].Values.RemoveAt(0);
+            //}
         }
 
         public void add_data_to_chart3(string val)
         {
             SeriesCollection3[0].Values.Add(Convert.ToDouble(val));
 
-            if (SeriesCollection3[0].Values.Count > 100)
-            {
-                SeriesCollection3[0].Values.RemoveAt(0);
-            }
+            //if (SeriesCollection3[0].Values.Count > 100)
+            //{
+            //    SeriesCollection3[0].Values.RemoveAt(0);
+            //}
         }
 
         public void add_data_to_chart4(string val)
         {
             SeriesCollection4[0].Values.Add(Convert.ToDouble(val));
 
-            if (SeriesCollection4[0].Values.Count > 100)
-            {
-                SeriesCollection4[0].Values.RemoveAt(0);
-            }
+            //if (SeriesCollection4[0].Values.Count > 100)
+            //{
+            //    SeriesCollection4[0].Values.RemoveAt(0);
+            //}
         }
     }
 }

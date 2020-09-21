@@ -80,19 +80,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainSide\Plot.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainSide\Position.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainSide\Settings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainSide\Torque.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,17 +105,8 @@
     <Compile Include="MainSide\LoadCell.xaml.cs">
       <DependentUpon>LoadCell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainSide\Plot.xaml.cs">
-      <DependentUpon>Plot.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainSide\Position.xaml.cs">
-      <DependentUpon>Position.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainSide\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainSide\Torque.xaml.cs">
-      <DependentUpon>Torque.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainSide\Trajectory.xaml.cs">
       <DependentUpon>Trajectory.xaml</DependentUpon>
@@ -204,6 +183,10 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\exo1.bmp" />
+    <Resource Include="Images\exo2.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
