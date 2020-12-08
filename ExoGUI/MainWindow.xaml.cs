@@ -156,6 +156,38 @@ namespace ExoGUI
         {
             if (btn_record.Content.ToString() == "RECORD")
             {
+                Home.ActualPos1RecordedData.Clear();
+                Home.ActualPos2RecordedData.Clear();
+                Home.ActualPos3RecordedData.Clear();
+                Home.ActualPos4RecordedData.Clear();
+                Home.CurrentVal1RecordedData.Clear();
+                Home.CurrentVal2RecordedData.Clear();
+                Home.CurrentVal3RecordedData.Clear();
+                Home.CurrentVal4RecordedData.Clear();
+                Home.LoadCell1RecordedData.Clear();
+                Home.LoadCell2RecordedData.Clear();
+                Home.LoadCell3RecordedData.Clear();
+                Home.LoadCell4RecordedData.Clear();
+                Home.FootSensor1RecordedData.Clear();
+                Home.FootSensor2RecordedData.Clear();
+                Home.FootSensor3RecordedData.Clear();
+                Home.FootSensor4RecordedData.Clear();
+                Home.PositionDesired1RecordedData.Clear();
+                Home.PositionDesired2RecordedData.Clear();
+                Home.PositionDesired3RecordedData.Clear();
+                Home.PositionDesired4RecordedData.Clear();
+                Home.LoadCellDesired1RecordedData.Clear();
+                Home.LoadCellDesired2RecordedData.Clear();
+                Home.LoadCellDesired3RecordedData.Clear();
+                Home.LoadCellDesired4RecordedData.Clear();
+                Home.EMGRight1RecordedData.Clear();
+                Home.EMGRight2RecordedData.Clear();
+                Home.EMGRight3RecordedData.Clear();
+                Home.EMGRight4RecordedData.Clear();
+                Home.EMGLeft1RecordedData.Clear();
+                Home.EMGLeft2RecordedData.Clear();
+                Home.EMGLeft3RecordedData.Clear();
+                Home.EMGLeft4RecordedData.Clear();
                 Record_popup.IsOpen = true;
             }
             else
@@ -181,7 +213,7 @@ namespace ExoGUI
 
         }
         public void WriteToExcel(string Addres, List<Int32> _Apos1, List<Int32> _Apos2, List<Int32> _Apos3, List<Int32> _Apos4,
-           List<Int16> _CurrentVal1, List<Int16> _CurrentVal2, List<Int16> _CurrentVal3, List<Int16> _CurrentVal4,
+           List<Int32> _CurrentVal1, List<Int32> _CurrentVal2, List<Int32> _CurrentVal3, List<Int32> _CurrentVal4,
            List<Int32> _LoadCell1, List<Int32> _LoadCell2, List<Int32> _LoadCell3, List<Int32> _LoadCell4,
            List<Int32> _FootSensor1, List<Int32> _FootSensor2, List<Int32> _FootSensor3, List<Int32> _FootSensor4,
            List<Int32> _DesiredPos1, List<Int32> _DesiredPos2, List<Int32> _DesiredPos3, List<Int32> _DesiredPos4,

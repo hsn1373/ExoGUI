@@ -97,11 +97,11 @@ namespace ExoGUI.NetWork
         PositionActualValBuffer2,
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
         PositionActualValBuffer3,
-        [Type(TypeAttribute.Types.Int, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
         CurrentValBuffer1,
-        [Type(TypeAttribute.Types.Int, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
         CurrentValBuffer2,
-        [Type(TypeAttribute.Types.Int, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
+        [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
         CurrentValBuffer3,
         [Type(TypeAttribute.Types.DInt, TypeAttribute.RW.FullControll, length: 500, sourceFunction: "GVL", notify: false)]
         LoadCellValBuffer1,

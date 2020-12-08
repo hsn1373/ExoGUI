@@ -37,10 +37,10 @@ namespace ExoGUI.MainSide
         public static List<Int32> ActualPos3RecordedData = new List<Int32>();
         public static List<Int32> ActualPos4RecordedData = new List<Int32>();
 
-        public static List<Int16> CurrentVal1RecordedData = new List<Int16>();
-        public static List<Int16> CurrentVal2RecordedData = new List<Int16>();
-        public static List<Int16> CurrentVal3RecordedData = new List<Int16>();
-        public static List<Int16> CurrentVal4RecordedData = new List<Int16>();
+        public static List<Int32> CurrentVal1RecordedData = new List<Int32>();
+        public static List<Int32> CurrentVal2RecordedData = new List<Int32>();
+        public static List<Int32> CurrentVal3RecordedData = new List<Int32>();
+        public static List<Int32> CurrentVal4RecordedData = new List<Int32>();
 
         public static List<Int32> LoadCell1RecordedData = new List<Int32>();
         public static List<Int32> LoadCell2RecordedData = new List<Int32>();
@@ -355,7 +355,7 @@ namespace ExoGUI.MainSide
                         {
                             
                             Int32[] BufferActualPos1 = new Int32[500];
-                            Int16[] BufferCurrentVal1 = new Int16[500];
+                            Int32[] BufferCurrentVal1 = new Int32[500];
                             Int32[] BufferLoadCell1 = new Int32[500];
                             Int32[] BufferFootSensor1 = new Int32[500];
                             Int32[] BufferpositionDesired1 = new Int32[500];
@@ -367,7 +367,7 @@ namespace ExoGUI.MainSide
                                 BufferActualPos1 = (Int32[])_connection[X.PositionActualValBuffer1];
 
                             if (CurrentActualRecordStatus[0] || CurrentActualRecordStatus[1] || CurrentActualRecordStatus[2] || CurrentActualRecordStatus[3])
-                                BufferCurrentVal1 = (Int16[])_connection[X.CurrentValBuffer1];
+                                BufferCurrentVal1 = (Int32[])_connection[X.CurrentValBuffer1];
 
                             if (LoadCellActualRecordStatus[0] || LoadCellActualRecordStatus[1] || LoadCellActualRecordStatus[2] || LoadCellActualRecordStatus[3])
                                 BufferLoadCell1 = (Int32[])_connection[X.LoadCellValBuffer1];
@@ -433,7 +433,7 @@ namespace ExoGUI.MainSide
                         else if (ff == 1)
                         {
                             Int32[] BufferActualPos2 = new Int32[500];
-                            Int16[] BufferCurrentVal2 = new Int16[500];
+                            Int32[] BufferCurrentVal2 = new Int32[500];
                             Int32[] BufferLoadCell2 = new Int32[500];
                             Int32[] BufferFootSensor2 = new Int32[500];
                             Int32[] BufferpositionDesired2 = new Int32[500];
@@ -445,7 +445,7 @@ namespace ExoGUI.MainSide
                                 BufferActualPos2 = (Int32[])_connection[X.PositionActualValBuffer2];
 
                             if (CurrentActualRecordStatus[0] || CurrentActualRecordStatus[1] || CurrentActualRecordStatus[2] || CurrentActualRecordStatus[3])
-                                BufferCurrentVal2 = (Int16[])_connection[X.CurrentValBuffer2];
+                                BufferCurrentVal2 = (Int32[])_connection[X.CurrentValBuffer2];
 
                             if (LoadCellActualRecordStatus[0] || LoadCellActualRecordStatus[1] || LoadCellActualRecordStatus[2] || LoadCellActualRecordStatus[3])
                                 BufferLoadCell2 = (Int32[])_connection[X.LoadCellValBuffer2];
