@@ -354,14 +354,14 @@ namespace ExoGUI.MainSide
                         if (ff == 2)
                         {
                             
-                            Int32[] BufferActualPos1 = new Int32[500];
-                            Int32[] BufferCurrentVal1 = new Int32[500];
-                            Int32[] BufferLoadCell1 = new Int32[500];
-                            Int32[] BufferFootSensor1 = new Int32[500];
-                            Int32[] BufferpositionDesired1 = new Int32[500];
-                            Int32[] BufferLoadCellDesired1 = new Int32[500];
-                            Int32[] BufferEmgRight1 = new Int32[500];
-                            Int32[] BufferEmgLeft1 = new Int32[500];
+                            Int32[] BufferActualPos1 = new Int32[400];
+                            Int32[] BufferCurrentVal1 = new Int32[400];
+                            Int32[] BufferLoadCell1 = new Int32[400];
+                            Int32[] BufferFootSensor1 = new Int32[400];
+                            Int32[] BufferpositionDesired1 = new Int32[400];
+                            Int32[] BufferLoadCellDesired1 = new Int32[400];
+                            Int32[] BufferEmgRight1 = new Int32[400];
+                            Int32[] BufferEmgLeft1 = new Int32[400];
 
                             if(PositionActualRecordStatus[0]|| PositionActualRecordStatus[1]|| PositionActualRecordStatus[2]|| PositionActualRecordStatus[3])
                                 BufferActualPos1 = (Int32[])_connection[X.PositionActualValBuffer1];
@@ -387,7 +387,7 @@ namespace ExoGUI.MainSide
                             if (EmgLeftRecordStatus[0] || EmgLeftRecordStatus[1] || EmgLeftRecordStatus[2] || EmgLeftRecordStatus[3])
                                 BufferEmgLeft1 = (Int32[])_connection[X.EMGLeftValBuffer1];
 
-                            for (int i = 0; i < 500; )
+                            for (int i = 0; i < 400; )
                             {
                                 ActualPos1RecordedData.Add(BufferActualPos1[i]);
                                 CurrentVal1RecordedData.Add(BufferCurrentVal1[i]);
@@ -432,14 +432,14 @@ namespace ExoGUI.MainSide
                         }
                         else if (ff == 1)
                         {
-                            Int32[] BufferActualPos2 = new Int32[500];
-                            Int32[] BufferCurrentVal2 = new Int32[500];
-                            Int32[] BufferLoadCell2 = new Int32[500];
-                            Int32[] BufferFootSensor2 = new Int32[500];
-                            Int32[] BufferpositionDesired2 = new Int32[500];
-                            Int32[] BufferLoadCellDesired2 = new Int32[500];
-                            Int32[] BufferEmgRight2 = new Int32[500];
-                            Int32[] BufferEmgLeft2 = new Int32[500];
+                            Int32[] BufferActualPos2 = new Int32[400];
+                            Int32[] BufferCurrentVal2 = new Int32[400];
+                            Int32[] BufferLoadCell2 = new Int32[400];
+                            Int32[] BufferFootSensor2 = new Int32[400];
+                            Int32[] BufferpositionDesired2 = new Int32[400];
+                            Int32[] BufferLoadCellDesired2 = new Int32[400];
+                            Int32[] BufferEmgRight2 = new Int32[400];
+                            Int32[] BufferEmgLeft2 = new Int32[400];
 
                             if (PositionActualRecordStatus[0] || PositionActualRecordStatus[1] || PositionActualRecordStatus[2] || PositionActualRecordStatus[3])
                                 BufferActualPos2 = (Int32[])_connection[X.PositionActualValBuffer2];
@@ -465,7 +465,7 @@ namespace ExoGUI.MainSide
                             if (EmgLeftRecordStatus[0] || EmgLeftRecordStatus[1] || EmgLeftRecordStatus[2] || EmgLeftRecordStatus[3])
                                 BufferEmgLeft2 = (Int32[])_connection[X.EMGLeftValBuffer2];
 
-                            for (int i = 0; i < 500; )
+                            for (int i = 0; i < 400; )
                             {
                                 ActualPos1RecordedData.Add(BufferActualPos2[i]);
                                 CurrentVal1RecordedData.Add(BufferCurrentVal2[i]);
